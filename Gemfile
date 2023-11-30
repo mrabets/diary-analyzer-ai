@@ -49,10 +49,14 @@ gem "bootsnap", require: false
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
+gem "capistrano-rvm"
+gem "capistrano-secrets-yml"
+
 group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "bundler-audit", require: false
   gem "debug", platforms: %i[mri windows]
+  gem "dotenv-rails"
   gem "rubocop", require: false
   gem "rubocop-factory_bot", require: false
   gem "rubocop-performance", require: false
@@ -70,6 +74,9 @@ group :development do
 
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
+
+  gem "capistrano", "~> 3.10", require: false
+  gem "capistrano-rails", "~> 1.6", require: false
 end
 
 group :test do
