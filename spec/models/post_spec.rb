@@ -1,19 +1,22 @@
 # frozen_string_literal: true
 
-require 'rspec'
+# == Schema Information
+#
+# Table name: posts
+#
+#  id         :bigint           not null, primary key
+#  title      :string
+#  content    :text
+#  created_at :datetime         not null
+#  updated_at :datetime         not null
+#
+require "rails_helper"
 
-RSpec.describe 'Post' do
-  before do
-    # Do nothing
-  end
-  
-  after do
-    # Do nothing
-  end
-  
-  context 'when condition' do
-    it 'succeeds' do
-      pending 'Not implemented'
-    end
+RSpec.describe Post do
+  describe "validations" do
+    it { is_expected.to validate_presence_of(:title) }
+    it { is_expected.to validate_length_of(:title).is_at_least(5).is_at_most(50) }
+    it { is_expected.to validate_presence_of(:content) }
+    it { is_expected.to validate_length_of(:content).is_at_least(10).is_at_most(1000) }
   end
 end
