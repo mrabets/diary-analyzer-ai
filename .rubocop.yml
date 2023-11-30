@@ -23,3 +23,6 @@ Style/StringLiterals:
   Enabled: true
   EnforcedStyle: double_quotes
   ConsistentQuotesInMultiline: false
+
+Style/EmptyMethod:
+  Enabled: false

@@ -28,4 +28,10 @@
 #       enabled: "ON"
 
 en:
-  hello: "Hello world"
+  posts:
+    create:
+      success: "Post was successfully created."
+    update:
+      success: "Post was successfully updated."
+    destroy:
+      success: "Post was successfully destroyed."
