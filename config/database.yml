@@ -1,49 +1,38 @@
 default: &default
   adapter: postgresql
   encoding: unicode
+  username: <%= ENV['POSTGRES_USERNAME'] %>
+  password: <%= ENV['POSTGRES_PASSWORD'] %>
+  host: <%= ENV['DB_HOST'] %>
   pool: <%= ENV.fetch("RAILS_MAX_THREADS") { 5 } %>
 
 development:
   primary:
     <<: *default
     database: diary_analyzer_ai_development
-    username: <%= ENV['DATABASE_USERNAME'] %>
-    password: <%= ENV['DATABASE_PASSWORD'] %>
-    host: <%= ENV['DATABASE_HOST'] %>
   primary_replica:
     <<: *default
     database: diary_analyzer_ai_development
-    username: <%= ENV['REPLICA_DATABASE_USERNAME'] %>
-    password: <%= ENV['REPLICA_DATABASE_PASSWORD'] %>
-    host: <%= ENV['REPLICA_DATABASE_HOST'] %>
     replica: true
 
 test:
   primary:
     <<: *default
     database: diary_analyzer_ai_test
-    username: <%= ENV['DATABASE_USERNAME'] %>
-    password: <%= ENV['DATABASE_PASSWORD'] %>
-    host: <%= ENV['DATABASE_HOST'] %>
   primary_replica:
     <<: *default
     database: diary_analyzer_ai_test
-    username: <%= ENV['REPLICA_DATABASE_USERNAME'] %>
-    password: <%= ENV['REPLICA_DATABASE_PASSWORD'] %>
-    host: <%= ENV['REPLICA_DATABASE_HOST'] %>
     replica: true
 
 production:
   primary:
     <<: *default
+    host: <%= ENV["DB_HOST"] %>
     database: diary_analyzer_ai_production
-    username: <%= ENV['DATABASE_USERNAME'] %>
-    password: <%= ENV['DATABASE_PASSWORD'] %>
-    host: <%= ENV['DATABASE_HOST'] %>
+    username: diary_analyzer_ai
   primary_replica:
     <<: *default
+    host: <%= ENV["DB_HOST"] %>
     database: diary_analyzer_ai_production
-    username: <%= ENV['REPLICA_DATABASE_USERNAME'] %>
-    password: <%= ENV['REPLICA_DATABASE_PASSWORD'] %>
-    host: <%= ENV['REPLICA_DATABASE_HOST'] %>
+    username: diary_analyzer_ai
     replica: true
