@@ -24,6 +24,9 @@ DB_HOST=localhost
 KAMAL_REGISTRY_PASSWORD=<your_dockerhub_access_token>
 RAILS_MASTER_KEY=<your_rails_master_key> # config/master.key
 SECRET_KEY_BASE=<your_secret_key_base> # generate with `rails secret`
+
+SERVER_HOST=<your_server_host>
+SENDGRID_API_KEY=<your_sendgrid_api_key>
 ```
 
 #### Run locally
