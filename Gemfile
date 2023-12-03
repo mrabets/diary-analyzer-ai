@@ -66,6 +66,7 @@ group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "annotate", "~> 3.2"
   gem "brakeman", require: false
+  gem "bullet"
   gem "flamegraph"
   gem "kamal"
   gem "memory_profiler"
