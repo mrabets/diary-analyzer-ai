@@ -46,6 +46,9 @@ gem "tzinfo-data", platforms: %i[windows jruby]
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
+gem "dotenv-rails"
+gem "strong_migrations"
+
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
 # gem "image_processing", "~> 1.2"
 
@@ -53,6 +56,7 @@ group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "bundler-audit", require: false
   gem "debug", platforms: %i[mri windows]
+  gem "pry"
   gem "rubocop", require: false
   gem "rubocop-factory_bot", require: false
   gem "rubocop-performance", require: false
@@ -64,6 +68,7 @@ group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "annotate", "~> 3.2"
   gem "brakeman", require: false
+  gem "bullet"
   gem "flamegraph"
   gem "kamal"
   gem "memory_profiler"
@@ -86,3 +91,5 @@ group :test do
   gem "shoulda-matchers", "~> 5.0"
   gem "simplecov", require: false
 end
+
+gem "devise", "~> 4.9"

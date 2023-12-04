@@ -18,6 +18,8 @@ env:
   secret:
     - RAILS_MASTER_KEY
     - POSTGRES_PASSWORD
+    - SERVER_HOST
+    - SENDGRID_API_KEY
 
 accessories:
   db:
