@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-shared_context "when signed in user" do
+shared_context "with signed in user" do
   let(:user) { create(:user) }
 
   before do

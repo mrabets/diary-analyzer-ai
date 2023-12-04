@@ -12,14 +12,14 @@
 
   <body>
     <div class="container">
-      <% if notice %><div class="alert alert-info"><%= notice %></div><% end %>
-      <% if alert %><div class="alert alert-warning"><%= alert %></div><% end %>
+      <p id="notice"><%= notice %></p>
+      <p id="alert"><%= alert %></p>
 
       <% if user_signed_in? %>
         <div> Welcome <%= current_user.email %> </div>
-        <%= button_to "Sign out", destroy_user_session_path, method: :delete %>
+        <%= link_to "Sign out", destroy_user_session_path, method: :delete %>
       <% else %>
-        <%= button_to "Sign in", new_user_session_path %>
+        <%= link_to "Sign in", new_user_session_path %>
       <% end %>
 
       <%= yield %>

@@ -3,7 +3,7 @@
 require "rails_helper"
 
 RSpec.describe PostsController do
-  include_examples "when signed in user"
+  include_examples "with signed in user"
 
   describe "GET #index" do
     subject(:get_index) { get :index }
