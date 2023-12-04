@@ -2,9 +2,10 @@
 
 class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update destroy]
+  before_action :authenticate_user!, except: %i[index show]
 
   def index
-    @posts = Post.all
+    @posts = Post.includes(:user)
   end
 
   def show
@@ -59,6 +60,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :content)
+    params.require(:post).permit(:title, :content).merge!(user_id: current_user.id)
   end
 end

@@ -3,10 +3,12 @@
 require "rails_helper"
 
 RSpec.describe PostsController do
+  include_examples "when signed in user"
+
   describe "GET #index" do
     subject(:get_index) { get :index }
 
-    let!(:post) { create(:post) }
+    let!(:post) { create(:post, user:) }
 
     it "returns a success response" do
       get_index
@@ -22,7 +24,7 @@ RSpec.describe PostsController do
   describe "GET #show" do
     subject(:get_show) { get :show, params: { id: post.id } }
 
-    let(:post) { create(:post) }
+    let(:post) { create(:post, user:) }
 
     it "returns a success response" do
       get_show
@@ -52,7 +54,7 @@ RSpec.describe PostsController do
   describe "GET #edit" do
     subject(:get_edit) { get :edit, params: { id: post.id } }
 
-    let(:post) { create(:post) }
+    let(:post) { create(:post, user:) }
 
     it "returns a success response" do
       get_edit
@@ -83,7 +85,7 @@ RSpec.describe PostsController do
   describe "PUT #update" do
     subject(:put_update) { put :update, params: { id: post.id, post: post_params } }
 
-    let(:post) { create(:post) }
+    let(:post) { create(:post, user:) }
     let(:post_params) { attributes_for(:post) }
 
     it "updates the requested post" do
@@ -108,7 +110,7 @@ RSpec.describe PostsController do
   describe "DELETE #destroy" do
     subject(:delete_destroy) { delete :destroy, params: { id: post.id } }
 
-    let!(:post) { create(:post) }
+    let!(:post) { create(:post, user:) }
 
     it "destroys the requested post" do
       expect { delete_destroy }.to change(Post, :count).by(-1)

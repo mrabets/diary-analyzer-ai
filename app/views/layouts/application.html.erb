@@ -12,8 +12,8 @@
 
   <body>
     <div class="container">
-      <p class="notice"><%= notice %></p>
-      <p class="alert"><%= alert %></p>
+      <% if notice %><div class="alert alert-info"><%= notice %></div><% end %>
+      <% if alert %><div class="alert alert-warning"><%= alert %></div><% end %>
 
       <% if user_signed_in? %>
         <div> Welcome <%= current_user.email %> </div>
