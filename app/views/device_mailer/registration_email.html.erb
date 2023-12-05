@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Welcome Email</title>
+</head>
+<body>
+<h2>Welcome to Diary Analyzer AI 📔, <%= @user.email %>!</h2>
+<p>Hello 👋! I'm <i>Karim Marabet</i>, a Ruby on Rails enthusiast and I am glad 🎉 to see you on my site to analyze diaries.</p>
+
+<p>You can, feel free to connect with me on social media:</p>
+<%= link_to image_tag('https://img.icons8.com/doodle/28/github--v1.png'), @social_links[:github] %>
+<%= link_to image_tag('https://img.icons8.com/doodle/28/linkedin--v2.png'), @social_links[:linkedin] %>
+<%= link_to image_tag('https://img.icons8.com/doodle/28/telegram.png'), @social_links[:telegram] %>
+
+<p>Looking forward to seeing you around 👀!</p>
+
+<p>Cheers,</p>
+<p>Karim Marabet 👨‍💻</p>
+</body>
+</html>
