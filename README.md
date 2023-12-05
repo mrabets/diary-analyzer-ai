@@ -27,6 +27,7 @@ SECRET_KEY_BASE=<your_secret_key_base> # generate with `rails secret`
 
 SERVER_HOST=<your_server_host>
 SENDGRID_API_KEY=<your_sendgrid_api_key>
+REDIS_URL=<your_redis_url> # e.g. redis://<your_server_host>:6379/0
 ```
 
 #### Run locally

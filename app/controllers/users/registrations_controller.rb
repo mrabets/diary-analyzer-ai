@@ -13,7 +13,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   def create
     return unless @user.persisted?
 
-    DeviceMailer.registration_email(current_user).deliver
+    DeviceMailer.registration_email(current_user).deliver_later
   end
 
   # GET /resource/edit
