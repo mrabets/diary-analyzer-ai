@@ -46,7 +46,15 @@ gem "tzinfo-data", platforms: %i[windows jruby]
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
+gem "devise", "~> 4.9"
 gem "dotenv-rails"
+gem "enumerate_it"
+gem "omniauth", "~> 2.1"
+gem "omniauth-github", "~> 2.0"
+gem "omniauth-google-oauth2", "~> 1.1"
+gem "omniauth-rails_csrf_protection", "~> 1.0"
+gem "omniauth-twitter", "~> 1.4"
+gem "sidekiq", "~> 7.2"
 gem "strong_migrations"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
@@ -75,9 +83,6 @@ group :development do
   gem "rack-mini-profiler"
   gem "stackprof"
   gem "web-console"
-  # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
-  # gem "rack-mini-profiler"
-
   # Speed up commands on slow machines / big apps [https://github.com/rails/spring]
   # gem "spring"
 end
@@ -91,7 +96,3 @@ group :test do
   gem "shoulda-matchers", "~> 5.0"
   gem "simplecov", require: false
 end
-
-gem "devise", "~> 4.9"
-
-gem "sidekiq", "~> 7.2"

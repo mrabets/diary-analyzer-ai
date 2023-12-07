@@ -30,6 +30,22 @@ SENDGRID_API_KEY=<your_sendgrid_api_key>
 REDIS_URL=<your_redis_url> # e.g. redis://<your_server_host>:6379/0
 ```
 
+OAuth2 credentials for Google and Facebook are required for user authentication. Generate Rails credentials with `rails credentials:edit` and add the following:
+
+```
+google:
+  client_id: your_google_client_id
+  client_secret: your_google_client_secret
+
+github:
+  client_id: your_github_client_id
+  client_secret: your_github_client_secret
+  
+twitter:
+  client_id: your_twitter_client_id
+  client_secret: your_twitter_client_secret
+```
+
 #### Run locally
 
 ```bash
