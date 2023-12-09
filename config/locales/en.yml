@@ -35,3 +35,5 @@ en:
       success: "Post was successfully updated."
     destroy:
       success: "Post was successfully destroyed."
+  device_mailer:
+    welcome_subject: "Welcome to Diary Analyzer AI!"
