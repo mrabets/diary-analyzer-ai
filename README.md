@@ -40,10 +40,6 @@ google:
 github:
   client_id: your_github_client_id
   client_secret: your_github_client_secret
-  
-twitter:
-  client_id: your_twitter_client_id
-  client_secret: your_twitter_client_secret
 ```
 
 #### Run locally

@@ -9,10 +9,6 @@ class Users::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     handle_auth(SocialNetwork::GITHUB)
   end
 
-  def twitter
-    handle_auth(SocialNetwork::TWITTER)
-  end
-
   private
 
   def handle_auth(provider)

@@ -65,8 +65,4 @@ RSpec.describe Users::OmniauthCallbacksController do
   describe "GET #github" do
     it_behaves_like "Omniauth callbacks", :github
   end
-
-  describe "GET #twitter" do
-    it_behaves_like "Omniauth callbacks", :twitter
-  end
 end

@@ -279,8 +279,6 @@ Devise.setup do |config|
                   Rails.application.credentials.dig(:google, :client_secret), scope: "userinfo.email, userinfo.profile"
   config.omniauth :github, Rails.application.credentials.dig(:github, :client_id),
                   Rails.application.credentials.dig(:github, :client_secret), scope: "user:email"
-  config.omniauth :twitter, Rails.application.credentials.dig(:twitter, :client_id),
-                  Rails.application.credentials.dig(:twitter, :client_secret)
 
   # ==> Warden configuration
   # If you want to use other strategies, that are not supported by Devise, or
