@@ -40,6 +40,8 @@ module DiaryAnalyzerAi
 
     config.active_job.queue_adapter = :sidekiq
 
+    config.active_storage.variant_processor = :mini_magick
+
     # Don't generate system test files.
     config.generators.system_tests = nil
   end

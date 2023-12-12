@@ -80,17 +80,28 @@ RSpec.describe PostsController do
       post_create
       expect(response).to redirect_to(Post.last)
     end
+
+    context "with invalid params" do
+      let(:post_params) { { title: "" } }
+
+      it "doesn't create a new Post" do
+        expect { post_create }.not_to change(Post, :count)
+      end
+    end
   end
 
   describe "PUT #update" do
     subject(:put_update) { put :update, params: { id: post.id, post: post_params } }
 
     let(:post) { create(:post, user:) }
-    let(:post_params) { attributes_for(:post) }
+    let(:new_content) { Faker::Lorem.paragraph }
+    let(:post_params) { { title: "Updated Title", content: new_content } }
 
     it "updates the requested post" do
       put_update
-      expect(post.reload).to have_attributes(post_params)
+      post.reload
+      expect(post.title).to eq("Updated Title")
+      expect(post.content.to_plain_text).to eq(new_content)
     end
 
     it "redirects to the post" do

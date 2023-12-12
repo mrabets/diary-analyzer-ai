@@ -5,7 +5,7 @@ class PostsController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
 
   def index
-    @posts = Post.includes(:user)
+    @posts = posts
   end
 
   def show
@@ -54,6 +54,10 @@ class PostsController < ApplicationController
   end
 
   private
+
+  def posts
+    @posts ||= Post.includes(%i[user rich_text_content])
+  end
 
   def set_post
     @post = Post.find(params[:id])
