@@ -5,7 +5,6 @@
 # Table name: posts
 #
 #  id         :bigint           not null, primary key
-#  content    :text
 #  title      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
@@ -18,7 +17,7 @@
 class Post < ApplicationRecord
   validates :title, :content, presence: true
   validates :title, length: { minimum: 5, maximum: 50 }
-  validates :content, length: { minimum: 10, maximum: 1000 }
 
+  has_rich_text :content
   belongs_to :user
 end

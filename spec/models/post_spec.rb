@@ -5,7 +5,6 @@
 # Table name: posts
 #
 #  id         :bigint           not null, primary key
-#  content    :text
 #  title      :string
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
@@ -22,8 +21,8 @@ describe Post do
     it { is_expected.to validate_presence_of(:title) }
     it { is_expected.to validate_length_of(:title).is_at_least(5).is_at_most(50) }
     it { is_expected.to validate_presence_of(:content) }
-    it { is_expected.to validate_length_of(:content).is_at_least(10).is_at_most(1000) }
 
     it { is_expected.to belong_to(:user) }
+    it { is_expected.to have_rich_text(:content) }
   end
 end
