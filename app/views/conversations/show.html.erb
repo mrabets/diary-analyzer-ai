@@ -1,0 +1,13 @@
+<div id="messages">
+  <%= turbo_stream_from @conversation %>
+  <% @conversation.messages.each do |message| %>
+    <div>
+      <p><%= message.user.name %>: <%= message.body %></p>
+    </div>
+  <% end %>
+</div>
+
+<%= form_with(model: [@conversation, @conversation.messages.new]) do |form| %>
+  <%= form.text_field :body %>
+  <%= form.submit "Send" %>
+<% end %>

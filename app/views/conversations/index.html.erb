@@ -1,0 +1,6 @@
+<%= turbo_stream_from "conversations" %>
+<% @conversations.each do |conversation| %>
+  <div>
+    <%= link_to "Conversation with #{conversation.receiver.name}", conversation_path(conversation) %>
+  </div>
+<% end %>

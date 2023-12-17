@@ -1,0 +1,23 @@
+<div class="card-body">
+  <div class="d-flex flex-column align-items-center text-center">
+<!--  <img src="<%#= @user.image %>" width="150" style="border-radius: 100px;">-->
+    <div class="mt-3">
+      <h4><%= current_user.name %></h4>
+      <% if current_user %><br><br>
+        <h2>My Posts</h2><br>
+        <% current_user.posts.each do |post| %>
+          <div class="card">
+            <div class="card-body">
+              <h5 class="card-title"><%= post.title %></h5>
+              <p class="card-text"><%= post.body %></p>
+              <p class="card-text"><%= post.created_at %></p>
+              <a href="#" class="btn btn-primary">Go somewhere</a>
+            </div>
+          </div>
+        <% end %>
+      <% else %>
+        <%= link_to "💬 Message" %>
+      <% end %>
+    </div>
+  </div>
+</div>

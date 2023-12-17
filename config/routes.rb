@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 
 Rails.application.routes.draw do
+  root "welcome#index"
+  get "welcome/index"
+  get "profile", to: "users#profile"
+  get "users", to: "users#index"
+
   devise_for :users, controllers: {
     sessions: "users/sessions",
     registrations: "users/registrations",
@@ -9,7 +14,9 @@ Rails.application.routes.draw do
 
   resources :posts
 
-  root "posts#index"
+  resources :conversations do
+    resources :messages
+  end
 
   get "/up", to: ->(_env) { [204, {}, [""]] }
 end
