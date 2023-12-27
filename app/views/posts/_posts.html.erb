@@ -1,0 +1,16 @@
+<div id="posts">
+  <% posts.each do |post| %>
+    <%= link_to post_path(post), class: "link-dark text-decoration-none" do %>
+      <div class="col-md-4 offset-md-4">
+        <div class="row g-0 border rounded overflow-hidden flex-md-row mb-4 shadow-sm h-md-250 position-relative">
+          <div class="col p-4 d-flex flex-column position-static">
+            <h3 class="mb-0">
+              <%= post.title %>
+            </h3>
+            <div class="mb-1 text-body-secondary"><%= post.created_at.strftime("%B %-d, %Y") %></div>
+          </div>
+        </div>
+      </div>
+    <% end %>
+  <% end %>
+</div>

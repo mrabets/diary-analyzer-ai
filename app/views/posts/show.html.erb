@@ -1,10 +1,21 @@
-<p style="color: green"><%= notice %></p>
-
 <%= render @post %>
 
-<div>
-  <%= link_to "Edit this post", edit_post_path(@post) %> |
-  <%= link_to "Back to posts", posts_path %>
+<div class="col-md-6 offset-md-3 text-center">
+  <div class="d-flex justify-content-center">
+    <%= link_to edit_post_path(@post) do %>
+      <div class="p-2">
+        <span class="fa-stack fa-lg">
+          <i class="fa-solid fa-pen-to-square fa-stack-1x fa-inverse" style="color: #000000;"></i>
+        </span>
+      </div>
+    <% end %>
 
-  <%= button_to "Destroy this post", @post, method: :delete %>
+    <%= button_to @post, method: :delete, form: { data: { turbo_confirm: "Are you sure?" } }, class: "button-as-icon" do %>
+      <div class="p-2">
+        <span class="fa-stack fa-lg">
+          <i class="fa-solid fa-trash fa-stack-1x fa-inverse" style="color: #000000;"></i>
+        </span>
+      </div>
+    <% end %>
+  </div>
 </div>

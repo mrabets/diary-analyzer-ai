@@ -1,17 +1,14 @@
-<div id="<%= dom_id post %>">
-  <p>
-    <strong>Title:</strong>
-    <%= post.title %>
-  </p>
+<div class="col-md-6 offset-md-3">
+  <article class="blog-post p-3">
+    <h2 class="display-5 link-body-emphasis mb-1"><%= post.title %></h2>
+    <p class="blog-post-meta fst-italic">January 1, 2021 by <%= link_to post.user.name, user_path(post.user) %></p>
 
-  <p>
-    <strong>Content:</strong>
+    <div class="py-3 d-flex justify-content-center">
+      <div class="w-100">
+        <div class="border-bottom"></div>
+      </div>
+    </div>
+
     <%= post.content %>
-  </p>
-
-  <p>
-    <strong>Author:</strong>
-    <%= post.user.email %>
-  </p>
-
+  </article>
 </div>

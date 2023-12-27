@@ -35,9 +35,15 @@ class User < ApplicationRecord
 
   validates :name, presence: true, length: { minimum: 2, maximum: 50 }
 
-  has_many :posts, dependent: :destroy
+  has_many :posts, dependent: :destroy, class_name: "Post"
+  has_many :messages, dependent: :destroy, class_name: "Message"
+  has_many :conversations, foreign_key: :sender_id, dependent: :destroy, inverse_of: :sender, class_name: "Conversation"
 
   def self.from_omniauth(auth)
     OmniauthUser.find_or_create(auth)
+  end
+
+  def self.all_except(user)
+    where.not(id: user)
   end
 end

@@ -1,11 +1,11 @@
 # frozen_string_literal: true
 
 class PostsController < ApplicationController
-  before_action :set_post, only: %i[show edit update destroy]
   before_action :authenticate_user!, except: %i[index show]
+  before_action :set_post, only: %i[show edit update destroy]
+  before_action :set_posts, only: %i[index]
 
   def index
-    @posts = posts
   end
 
   def show
@@ -55,8 +55,8 @@ class PostsController < ApplicationController
 
   private
 
-  def posts
-    @posts ||= Post.includes(%i[user rich_text_content])
+  def set_posts
+    @posts = Post.all
   end
 
   def set_post
@@ -64,6 +64,6 @@ class PostsController < ApplicationController
   end
 
   def post_params
-    params.require(:post).permit(:title, :content).merge!(user_id: current_user.id)
+    params.require(:post).permit(:title, :content).tap { |params| params[:user_id] = current_user.id }
   end
 end

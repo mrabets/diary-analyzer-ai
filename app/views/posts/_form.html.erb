@@ -11,17 +11,20 @@
     </div>
   <% end %>
 
-  <div>
-    <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+  <div class="row mb-5">
+    <div class="col-md-4 offset-md-4">
+      <div class="mb-3">
+        <%= form.label :title, style: "display: block", class: "form-label" %>
+        <%= form.text_field :title, class: "form-control" %>
+      </div>
+    </div>
   </div>
 
-  <div>
-    <%= form.label :content, style: "display: block" %>
-    <%= form.rich_text_area :content %>
+  <div class="mb-3">
+    <%= form.rich_text_area :content, class: "form-control", style: "min-height: 300px;" %>
   </div>
 
-  <div>
-    <%= form.submit %>
+  <div class="text-center">
+    <%= form.submit "Save", class: "btn btn-dark" %>
   </div>
 <% end %>

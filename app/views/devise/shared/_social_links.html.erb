@@ -1,0 +1,23 @@
+<%- if devise_mapping.omniauthable? %>
+  <div class="py-3 d-flex justify-content-center">
+    <%- resource_class.omniauth_providers.each do |provider| %>
+      <%= button_to omniauth_authorize_path(resource_name, provider), method: :post, data: { turbo: false }, class: "button-as-icon" do %>
+        <% if provider == :google_oauth2 %>
+          <div class="p-2">
+            <span class="fa-stack fa-lg">
+              <i class="fas fa-circle fa-stack-2x"></i>
+              <i class="fab fa-google fa-stack-1x fa-inverse"></i>
+            </span>
+          </div>
+        <% elsif provider == :github %>
+          <div class="p-2">
+            <span class="fa-stack fa-lg">
+              <i class="fas fa-circle fa-stack-2x"></i>
+              <i class="fab fa-github fa-stack-1x fa-inverse"></i>
+            </span>
+          </div>
+        <% end %>
+      <% end %>
+    <% end %>
+  </div>
+<% end %>
