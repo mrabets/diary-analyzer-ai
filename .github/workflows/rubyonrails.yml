@@ -56,3 +56,13 @@ jobs:
         run: bin/brakeman -q -w2
       - name: Lint Ruby files
         run: bin/rubocop --parallel
+  fasterer:
+    name: runner / fasterer
+    runs-on: ubuntu-latest
+    steps:
+      - name: Check out code
+        uses: actions/checkout@v3
+      - name: Fasterer
+        uses: vk26/action-fasterer@v1.1
+        with:
+          github_token: ${{ secrets.github_token }}

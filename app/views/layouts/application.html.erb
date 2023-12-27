@@ -1,29 +1,35 @@
 <!DOCTYPE html>
-<html>
+<html class="h-100" lang="en">
   <head>
-    <title>DiaryAnalyzerAi</title>
+    <title>DiaryAnalyzer Ai</title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
     <%= csrf_meta_tags %>
     <%= csp_meta_tag %>
 
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Anton&family=Nunito&display=swap" rel="stylesheet">
+
+    <%= favicon_link_tag asset_path("logo.svg") %>
+    <script src="https://kit.fontawesome.com/a1d72dce01.js" crossorigin="anonymous"></script>
+
     <%= stylesheet_link_tag "actiontext", "data-turbo-track": "reload" %>
+    <%= stylesheet_link_tag "style", "data-turbo-track": "reload" %>
     <%= stylesheet_link_tag "application", "data-turbo-track": "reload" %>
     <%= javascript_include_tag "application", "data-turbo-track": "reload", defer: true %>
   </head>
 
-  <body>
-    <div class="container">
-      <p id="notice"><%= notice %></p>
-      <p id="alert"><%= alert %></p>
+  <body class="d-flex h-100">
+    <div style="max-width: 75%;" class="container d-flex w-100 p-3 mx-auto flex-column">
+      <%= render "layouts/navbar" %>
 
-      <% if user_signed_in? %>
-        <div> Welcome <%= current_user.name %> </div>
-        <%= link_to "Sign out", destroy_user_session_path, data: { "turbo-method": :delete } %>
-      <% else %>
-        <%= link_to "Sign in", new_user_session_path %>
-      <% end %>
+      <div class="text-center">
+        <p style="color: green"><%= notice %></p>
+        <p style="color: red"><%= alert %></p>
+      </div>
 
       <%= yield %>
+      <%= render "layouts/footer" %>
     </div>
   </body>
 </html>

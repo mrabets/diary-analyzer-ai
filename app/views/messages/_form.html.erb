@@ -1,0 +1,17 @@
+<turbo-frame id="new_message">
+  <%= form_with model: [conversation, Message.new], data: { turbo_frame: "messages" }, local: true, class: "form-inline" do |form| %>
+    <div class="form-group mb-2">
+      <%= form.text_area :body, class: "form-control", rows: 3, placeholder: "Type your message here" %>
+    </div>
+    <div class="form-group text-center">
+      <%= form.button class: "button-as-icon" do %>
+        <div class="p-2">
+          <span class="fa-stack fa-lg">
+            <i class="fas fa-circle fa-stack-2x"></i>
+            <i class="fa-regular fa-paper-plane fa-stack-1x fa-inverse"></i>
+          </span>
+        </div>
+      <% end %>
+    </div>
+  <% end %>
+</turbo-frame>

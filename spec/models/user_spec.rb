@@ -35,7 +35,9 @@ describe User do
   end
 
   describe "associations" do
-    it { is_expected.to have_many(:posts) }
+    it { is_expected.to have_many(:posts).class_name("Post").dependent(:destroy) }
+    it { is_expected.to have_many(:conversations).dependent(:destroy).class_name("Conversation") }
+    it { is_expected.to have_many(:messages).dependent(:destroy).class_name("Message") }
   end
 
   describe ".from_omniauth" do

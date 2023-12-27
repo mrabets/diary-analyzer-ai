@@ -1,0 +1,20 @@
+.compact-font {
+    font-family: 'Anton', Arial, sans-serif;
+}
+
+.message-card {
+    margin-bottom: 10px;
+    box-sizing: border-box;
+    word-wrap: break-word;
+}
+
+@media (max-width: 767px) {
+    .message-card {
+        width: 100% !important;
+    }
+}
+
+.button-as-icon {
+    background: none;
+    border: none;
+}

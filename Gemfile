@@ -47,9 +47,11 @@ gem "tzinfo-data", platforms: %i[windows jruby]
 gem "bootsnap", require: false
 
 gem "aws-sdk-s3", "~> 1.141"
+gem "better_html"
 gem "devise", "~> 4.9"
 gem "dotenv-rails"
 gem "enumerate_it"
+gem "erb_lint", require: false
 gem "omniauth", "~> 2.1"
 gem "omniauth-github", "~> 2.0"
 gem "omniauth-google-oauth2", "~> 1.1"
