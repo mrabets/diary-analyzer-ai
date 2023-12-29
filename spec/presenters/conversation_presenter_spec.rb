@@ -3,7 +3,8 @@
 require "rails_helper"
 
 describe ConversationPresenter do
-  let(:user) { create(:user) }
+  include_context "user"
+
   let(:receiver) { create(:user) }
   let(:conversation) { create(:conversation, sender: user, receiver:) }
   let(:presenter) { described_class.new(conversation:, current_user: user) }

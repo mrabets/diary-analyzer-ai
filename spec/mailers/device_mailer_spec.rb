@@ -4,7 +4,8 @@ require "rails_helper"
 
 RSpec.describe DeviceMailer do
   describe "registration_email" do
-    let(:user) { create(:user) }
+    include_context "user"
+
     let(:mail) { described_class.registration_email(user) }
 
     it "renders the headers", :aggregate_failures do

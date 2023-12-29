@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 shared_context "with signed in user" do
-  let(:user) { create(:user) }
+  include_context "user"
 
   before do
     user.confirm

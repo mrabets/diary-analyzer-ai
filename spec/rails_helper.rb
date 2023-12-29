@@ -14,6 +14,7 @@ abort("The Rails environment is running in production mode!") if Rails.env.produ
 require "rspec/rails"
 # Add additional requires below this line. Rails is not loaded until this point!
 require "sidekiq/testing"
+require "test_prof/recipes/rspec/any_fixture"
 
 Sidekiq::Testing.fake!
 OmniAuth.config.test_mode = true
