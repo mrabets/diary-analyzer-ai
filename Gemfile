@@ -79,6 +79,7 @@ group :development do
   gem "annotate", "~> 3.2"
   gem "brakeman", require: false
   gem "bullet"
+  gem "database_consistency", require: false
   gem "flamegraph"
   gem "kamal"
   gem "memory_profiler"
