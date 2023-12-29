@@ -3,7 +3,8 @@
 require "rails_helper"
 
 describe MessageCreator do
-  let(:user) { create(:user) }
+  include_context "user"
+
   let(:receiver) { create(:user) }
   let(:conversation) { create(:conversation, sender: user, receiver:) }
   let(:params) { { body: } }

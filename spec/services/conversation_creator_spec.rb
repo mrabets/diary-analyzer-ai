@@ -3,7 +3,8 @@
 require "rails_helper"
 
 describe ConversationCreator do
-  let(:user) { create(:user) }
+  include_context "user"
+
   let(:receiver) { create(:user) }
 
   describe ".call" do

@@ -97,4 +97,5 @@ group :test do
   gem "rspec-rails", "~> 6.1.0"
   gem "shoulda-matchers", "~> 5.0"
   gem "simplecov", require: false
+  gem "test-prof"
 end
