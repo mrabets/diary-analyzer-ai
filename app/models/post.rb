@@ -20,7 +20,7 @@
 #
 class Post < ApplicationRecord
   validates :title, :content, presence: true
-  validates :title, length: { minimum: 5, maximum: 50 }
+  validates :title, length: { minimum: 2, maximum: 200 }
 
   has_rich_text :content
   db_belongs_to :user
