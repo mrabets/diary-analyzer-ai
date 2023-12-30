@@ -31,6 +31,6 @@ RSpec.describe Conversation do
   describe "validations" do
     subject { build(:conversation) }
 
-    it { is_expected.to validate_uniqueness_of(:sender_id).scoped_to(:receiver_id) }
+    it { is_expected.to validate_db_uniqueness_of(:sender_id).scoped_to(:receiver_id) }
   end
 end

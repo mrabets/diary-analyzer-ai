@@ -23,5 +23,5 @@ class Post < ApplicationRecord
   validates :title, length: { minimum: 5, maximum: 50 }
 
   has_rich_text :content
-  belongs_to :user
+  db_belongs_to :user
 end

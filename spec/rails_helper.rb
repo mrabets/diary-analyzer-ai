@@ -15,6 +15,7 @@ require "rspec/rails"
 # Add additional requires below this line. Rails is not loaded until this point!
 require "sidekiq/testing"
 require "test_prof/recipes/rspec/any_fixture"
+require "database_validations/rspec/matchers"
 
 Sidekiq::Testing.fake!
 OmniAuth.config.test_mode = true

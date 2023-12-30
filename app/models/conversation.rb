@@ -20,9 +20,9 @@
 #  fk_rails_...  (sender_id => users.id)
 #
 class Conversation < ApplicationRecord
-  belongs_to :sender, class_name: "User"
-  belongs_to :receiver, class_name: "User"
+  db_belongs_to :sender, class_name: "User"
+  db_belongs_to :receiver, class_name: "User"
   has_many :messages, class_name: "Message", dependent: :destroy
 
-  validates :sender_id, uniqueness: { scope: :receiver_id }
+  validates :sender_id, db_uniqueness: { scope: :receiver_id }
 end

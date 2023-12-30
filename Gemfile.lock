@@ -130,6 +130,8 @@ GEM
     database_cleaner-core (2.0.1)
     database_consistency (1.7.23)
       activerecord (>= 3.2)
+    database_validations (1.1.1)
+      activerecord (>= 4.2.0)
     date (3.3.4)
     debug (1.9.1)
       irb (~> 1.10)
@@ -159,9 +161,9 @@ GEM
       rubocop
       smart_properties
     erubi (1.12.0)
-    factory_bot (6.4.4)
+    factory_bot (6.4.5)
       activesupport (>= 5.0.0)
-    factory_bot_rails (6.4.2)
+    factory_bot_rails (6.4.3)
       factory_bot (~> 6.4)
       railties (>= 5.0.0)
     faker (3.2.2)
@@ -235,6 +237,14 @@ GEM
     net-ssh (7.2.1)
     nio4r (2.7.0)
     nokogiri (1.16.0-aarch64-linux)
+      racc (~> 1.4)
+    nokogiri (1.16.0-arm-linux)
+      racc (~> 1.4)
+    nokogiri (1.16.0-arm64-darwin)
+      racc (~> 1.4)
+    nokogiri (1.16.0-x86-linux)
+      racc (~> 1.4)
+    nokogiri (1.16.0-x86_64-darwin)
       racc (~> 1.4)
     nokogiri (1.16.0-x86_64-linux)
       racc (~> 1.4)
@@ -448,6 +458,10 @@ GEM
 
 PLATFORMS
   aarch64-linux
+  arm-linux
+  arm64-darwin
+  x86-linux
+  x86_64-darwin
   x86_64-linux
 
 DEPENDENCIES
@@ -461,6 +475,7 @@ DEPENDENCIES
   cssbundling-rails
   database_cleaner-active_record
   database_consistency
+  database_validations
   debug
   devise (~> 4.9)
   dotenv-rails
@@ -507,4 +522,4 @@ RUBY VERSION
    ruby 3.2.2p53
 
 BUNDLED WITH
-   2.4.10
+   2.5.3

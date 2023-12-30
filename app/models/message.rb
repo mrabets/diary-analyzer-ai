@@ -22,8 +22,8 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Message < ApplicationRecord
-  belongs_to :conversation, class_name: "Conversation"
-  belongs_to :user, class_name: "User"
+  db_belongs_to :conversation, class_name: "Conversation"
+  db_belongs_to :user, class_name: "User"
 
   validates :body, presence: true, allow_blank: false, length: { maximum: 10_000 }
 
