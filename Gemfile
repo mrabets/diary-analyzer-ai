@@ -48,6 +48,7 @@ gem "bootsnap", require: false
 
 gem "aws-sdk-s3", "~> 1.141"
 gem "better_html"
+gem "database_validations"
 gem "devise", "~> 4.9"
 gem "dotenv-rails"
 gem "enumerate_it"
