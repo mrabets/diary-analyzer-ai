@@ -1,6 +1,6 @@
 <turbo-frame id="new_message">
   <%= form_with model: [conversation, Message.new], local: true, class: "form-inline",
-                data: { turbo_frame: "messages", controller: "enter-submit", action: "keydown.enter->enter-submit#submitOnEnter"} do |form| %>
+                data: { turbo_frame: "messages", controller: "enter-submit", action: "keydown.enter->enter-submit#submitOnEnter" } do |form| %>
     <div class="form-group mb-2">
       <%= form.text_area :body, class: "form-control", rows: 3, placeholder: "Type your message here" %>
     </div>

@@ -15,3 +15,6 @@ application.register("message", MessageController)
 
 import EnterSubmitController from "./enter_submit_controller"
 application.register("enter-submit", EnterSubmitController)
+
+import PagyInitializerController from "./pagy_initializer_controller"
+application.register("pagy-initializer", PagyInitializerController)

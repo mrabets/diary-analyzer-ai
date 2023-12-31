@@ -255,6 +255,8 @@ GEM
       rack (>= 1.2, < 4)
       snaky_hash (~> 2.0)
       version_gem (~> 1.1)
+    oj (3.16.3)
+      bigdecimal (>= 3.0)
     omniauth (2.1.2)
       hashie (>= 3.4.6)
       rack (>= 2.2.3)
@@ -274,6 +276,7 @@ GEM
       actionpack (>= 4.2)
       omniauth (~> 2.0)
     orm_adapter (0.5.0)
+    pagy (6.2.0)
     parallel (1.24.0)
     parser (3.2.2.4)
       ast (~> 2.4.1)
@@ -489,10 +492,12 @@ DEPENDENCIES
   jsbundling-rails
   kamal
   memory_profiler
+  oj
   omniauth (~> 2.1)
   omniauth-github (~> 2.0)
   omniauth-google-oauth2 (~> 1.1)
   omniauth-rails_csrf_protection (~> 1.0)
+  pagy (~> 6.2)
   pg (~> 1.1)
   pry
   puma (>= 5.0)

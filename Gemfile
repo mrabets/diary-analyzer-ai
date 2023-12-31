@@ -53,10 +53,12 @@ gem "devise", "~> 4.9"
 gem "dotenv-rails"
 gem "enumerate_it"
 gem "erb_lint", require: false
+gem "oj"
 gem "omniauth", "~> 2.1"
 gem "omniauth-github", "~> 2.0"
 gem "omniauth-google-oauth2", "~> 1.1"
 gem "omniauth-rails_csrf_protection", "~> 1.0"
+gem "pagy", "~> 6.2"
 gem "sidekiq", "~> 7.2"
 gem "strong_migrations"
 
@@ -67,6 +69,7 @@ group :development, :test do
   # See https://guides.rubyonrails.org/debugging_rails_applications.html#debugging-with-the-debug-gem
   gem "bundler-audit", require: false
   gem "debug", platforms: %i[mri windows]
+  gem "faker"
   gem "pry"
   gem "rubocop", require: false
   gem "rubocop-factory_bot", require: false
@@ -94,7 +97,6 @@ end
 group :test do
   gem "database_cleaner-active_record"
   gem "factory_bot_rails"
-  gem "faker"
   gem "rails-controller-testing"
   gem "rspec-rails", "~> 6.1.0"
   gem "shoulda-matchers", "~> 5.0"

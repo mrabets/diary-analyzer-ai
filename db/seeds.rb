@@ -1,10 +1,22 @@
 # frozen_string_literal: true
-# This file should ensure the existence of records required to run the application in every environment (production,
-# development, test). The code here should be idempotent so that it can be executed at any point in every environment.
-# The data can then be loaded with the bin/rails db:seed command (or created alongside the database with db:setup).
-#
-# Example:
-#
-#   ["Action", "Comedy", "Drama", "Horror"].each do |genre_name|
-#     MovieGenre.find_or_create_by!(name: genre_name)
-#   end
+
+def create_admin_user
+  user = User.find_or_create_by(email: "admin@admin.com", name: "Admin")
+  user.update(password: "password", password_confirmation: "password")
+  user.confirm
+  user.save!
+  user
+end
+
+def create_user_posts(user)
+  (1..200).each do |number|
+    Post.create(
+      title: "#{ActiveSupport::Inflector.ordinalize(number)} Post",
+      content: Faker::Lorem.paragraphs(number: rand(5..100)),
+      user:
+    )
+  end
+end
+
+user = create_admin_user
+create_user_posts(user)
