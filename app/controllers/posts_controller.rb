@@ -1,9 +1,11 @@
 # frozen_string_literal: true
 
 class PostsController < ApplicationController
+  include Pagy::Backend
+
   before_action :authenticate_user!, except: %i[index show]
   before_action :set_post, only: %i[show edit update destroy]
-  before_action :set_posts, only: %i[index]
+  before_action :set_posts_with_pagy, only: %i[index]
 
   def index
   end
@@ -55,8 +57,8 @@ class PostsController < ApplicationController
 
   private
 
-  def set_posts
-    @posts = Post.all
+  def set_posts_with_pagy
+    @pagy, @posts = pagy(Post.all, items: 5)
   end
 
   def set_post
