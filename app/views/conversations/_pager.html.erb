@@ -1,0 +1,14 @@
+<div id="pager" class="min-w-full my-8 flex text-center">
+  <div>
+    <% if pagy.next %>
+      <%= link_to(
+            "Load more messages",
+            conversation_path(conversation, page: pagy.next),
+            class: "btn btn-dark btn-sm",
+            data: {
+              turbo_stream: ""
+            }
+          ) %>
+    <% end %>
+  </div>
+</div>

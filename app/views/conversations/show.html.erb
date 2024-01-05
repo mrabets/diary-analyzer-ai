@@ -1,11 +1,13 @@
 <div class="container mt-3">
   <h2 class="mb-4">Conversation with <%= @presenter.companion.name %></h2>
 
-  <%= turbo_stream_from "messages" %>
+  <%= turbo_stream_from @conversation %>
 
-  <turbo-frame id="messages" class="mb-3">
+  <%= render "pager", conversation: @conversation, pagy: @pagy %>
+
+  <div id="messages" class="mb-3">
     <%= render @messages %>
-  </turbo-frame>
+  </div>
 
   <%= render "messages/form", conversation: @conversation %>
 </div>

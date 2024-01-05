@@ -26,6 +26,4 @@ class Message < ApplicationRecord
   db_belongs_to :user, class_name: "User"
 
   validates :body, presence: true, allow_blank: false, length: { maximum: 10_000 }
-
-  after_create_commit -> { broadcast_append_to "messages" }
 end

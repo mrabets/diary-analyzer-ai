@@ -9,16 +9,27 @@ RSpec.describe ConversationsController do
 
   describe "GET #show" do
     let(:conversation) { create(:conversation, sender: user, receiver:) }
+    let!(:messages) { create_list(:message, 15, conversation:) }
+    let(:page) { 1 }
 
-    before { get :show, params: { id: conversation.id } }
+    before { get :show, params: { id: conversation.id, page: } }
 
     it "returns http success and assigns variables" do
       expect(response).to have_http_status(:success)
       expect(assigns(:conversation)).to eq(conversation)
-      expect(assigns(:messages)).to eq(conversation.messages)
+      expect(assigns(:messages)).to eq(messages.last(10))
+      expect(assigns(:pagy)).to be_a(Pagy)
       expect(assigns(:presenter)).to be_a(ConversationPresenter)
 
       expect(response).to render_template(:show)
+    end
+
+    context "when page equals 2" do
+      let(:page) { 2 }
+
+      it "returns next messages" do
+        expect(assigns(:messages)).to eq(messages.first(5))
+      end
     end
   end
 

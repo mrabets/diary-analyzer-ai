@@ -10,11 +10,5 @@ application.register("form", FormController)
 import HelloController from "./hello_controller"
 application.register("hello", HelloController)
 
-import MessageController from "./message_controller"
-application.register("message", MessageController)
-
-import EnterSubmitController from "./enter_submit_controller"
-application.register("enter-submit", EnterSubmitController)
-
 import PagyInitializerController from "./pagy_initializer_controller"
 application.register("pagy-initializer", PagyInitializerController)

@@ -17,7 +17,7 @@ require "sidekiq/testing"
 require "test_prof/recipes/rspec/any_fixture"
 require "database_validations/rspec/matchers"
 
-Sidekiq::Testing.fake!
+Sidekiq::Testing.inline!
 OmniAuth.config.test_mode = true
 # Requires supporting ruby files with custom matchers and macros, etc, in
 # spec/support/ and its subdirectories. Files matching `spec/**/*_spec.rb` are
