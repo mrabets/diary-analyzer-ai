@@ -29,3 +29,6 @@ Style/EmptyMethod:
 
 RSpec/ExampleLength:
   Max: 10
+
+FactoryBot/ExcessiveCreateList:
+  Enabled: false

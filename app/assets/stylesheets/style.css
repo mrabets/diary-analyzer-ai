@@ -1,17 +1,30 @@
+body {
+    padding-top: 80px;
+}
+
+.navbar-container {
+    max-width: 75% !important;
+}
+
 .compact-font {
     font-family: 'Anton', Arial, sans-serif;
 }
 
-.message-card {
-    margin-bottom: 10px;
-    box-sizing: border-box;
-    word-wrap: break-word;
+.avatar {
+    width: 150px;
+    height: 150px;
 }
 
-@media (max-width: 767px) {
-    .message-card {
-        width: 100% !important;
-    }
+.message-card {
+    width: fit-content;
+    max-width: 80%;
+    margin-bottom: 1rem;
+    margin-right: 1rem;
+    margin-left: 1rem
+}
+
+.custom-card-body {
+    padding: 0.5rem 0.5rem 0 0.5rem;
 }
 
 .button-as-icon {
@@ -29,3 +42,10 @@
     background: #000000 !important;
     border-color: #000000 !important;
 }
+
+#messages {
+    height: calc(100vh - 150px);
+    overflow-x: hidden;
+    overflow-y: scroll;
+}
+

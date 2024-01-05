@@ -3,7 +3,6 @@
 def create_admin_user
   user = User.find_or_create_by(email: "admin@admin.com", name: "Admin")
   user.update(password: "password", password_confirmation: "password")
-  user.confirm
   user.save!
   user
 end

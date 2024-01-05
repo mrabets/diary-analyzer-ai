@@ -13,12 +13,16 @@ describe MessagesController do
 
     before do
       allow(MessageCreator).to receive(:call).and_return(message)
+      allow(message).to receive(:broadcast_append_to).with(conversation, partial: "messages/message",
+                                                                         locals: { message: }, target: "messages")
     end
 
-    it "renders turbo_stream" do
+    it "broadcasts message", :aggregate_failures do
       post :create, params:, format: :turbo_stream
 
+      expect(message).to have_received(:broadcast_append_to)
       expect(MessageCreator).to have_received(:call)
+      expect(response).to have_http_status(:success)
     end
 
     context "when message has not been saved" do

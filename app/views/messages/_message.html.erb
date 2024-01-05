@@ -1,6 +1,6 @@
-<div id="<%= dom_id(message) %>" data-controller="message" class="message-card">
+<div id="<%= dom_id(message) %>" class="message-card cont-<%= message.user.id %>">
   <div class="card">
-    <div class="card-body">
+    <div class="custom-card-body">
       <strong>
         <%= link_to message.user.name, user_path(message.user), data: { turbo: false },
                                                                 class: "link-dark", style: "text-decoration: none;" %>

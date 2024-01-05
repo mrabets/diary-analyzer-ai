@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class ConversationsController < ApplicationController
+  include Pagy::Backend
+
   before_action :authenticate_user!, :set_conversation
   before_action :set_messages, :set_presenter, only: %i[show]
 
@@ -18,7 +20,9 @@ class ConversationsController < ApplicationController
   end
 
   def set_messages
-    @messages = @conversation.messages.includes(:user)
+    messages = @conversation.messages.order(created_at: :desc).includes(:user)
+    @pagy, @messages = pagy(messages, items: 10)
+    @messages = @messages.reverse
   end
 
   def set_presenter

@@ -15,6 +15,7 @@
     "postcss": "^8.4.31",
     "postcss-cli": "^10.1.0",
     "sass": "^1.69.5",
+    "stimulus-use": "^0.52.2",
     "trix": "^2.0.8"
   },
   "scripts": {

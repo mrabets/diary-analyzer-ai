@@ -8,6 +8,7 @@
 #  confirmation_sent_at   :datetime
 #  confirmation_token     :string
 #  confirmed_at           :datetime
+#  data                   :text
 #  email                  :string           default(""), not null
 #  encrypted_password     :string           default(""), not null
 #  name                   :string           not null
@@ -29,6 +30,8 @@
 require "rails_helper"
 
 describe User do
+  let(:user) { build(:user) }
+
   describe "validations" do
     it { is_expected.to validate_presence_of(:name) }
     it { is_expected.to validate_length_of(:name).is_at_least(2).is_at_most(50) }
@@ -38,6 +41,22 @@ describe User do
     it { is_expected.to have_many(:posts).class_name("Post").dependent(:destroy) }
     it { is_expected.to have_many(:conversations).dependent(:destroy).class_name("Conversation") }
     it { is_expected.to have_many(:messages).dependent(:destroy).class_name("Message") }
+    it { is_expected.to have_one_attached(:avatar) }
+  end
+
+  describe "callbacks" do
+    describe "before_save" do
+      let(:avatar_url) { "avatar_url" }
+
+      before { allow(Faker::Avatar).to receive(:image).and_return(avatar_url) }
+
+      it "adds a avatar url" do
+        user.save
+
+        expect(Faker::Avatar).to have_received(:image)
+        expect(user.data[:avatar_url]).to eq(avatar_url)
+      end
+    end
   end
 
   describe ".from_omniauth" do
