@@ -18,7 +18,7 @@ describe UsersController do
     let(:users) { create_list(:user, 3) }
 
     before do
-      allow(User).to receive(:all_except).and_return(users)
+      allow(UserQuery).to receive(:all_except).and_return(users)
 
       get :index
     end

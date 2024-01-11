@@ -18,6 +18,6 @@ class UsersController < ApplicationController
   end
 
   def set_conversation_users
-    @users = User.all_except(current_user)
+    @users = UserQuery.all_except(current_user)
   end
 end

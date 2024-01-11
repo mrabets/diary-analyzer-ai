@@ -10,9 +10,9 @@ describe Users::RegistrationsController do
       let(:user_params) { { user: attributes_for(:user) } }
 
       it "triggers DeviceMailer" do
-        expect do
-          post :create, params: user_params
-        end.to change(ActionMailer::Base.deliveries, :count).by(1)
+        post :create, params: user_params
+
+        expect(ActionMailer::MailDeliveryJob).to have_been_enqueued.on_queue("default")
       end
 
       it "creates a new user" do

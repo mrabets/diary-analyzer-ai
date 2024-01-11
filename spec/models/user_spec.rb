@@ -20,12 +20,18 @@
 #  unconfirmed_email      :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  user_status_id         :bigint           default(1), not null
 #
 # Indexes
 #
 #  index_users_on_email                 (email) UNIQUE
 #  index_users_on_provider_and_uid      (provider,uid) UNIQUE
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
+#  index_users_on_user_status_id        (user_status_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (user_status_id => user_statuses.id)
 #
 require "rails_helper"
 
@@ -34,7 +40,7 @@ describe User do
 
   describe "validations" do
     it { is_expected.to validate_presence_of(:name) }
-    it { is_expected.to validate_length_of(:name).is_at_least(2).is_at_most(50) }
+    it { is_expected.to validate_length_of(:name).is_at_least(2).is_at_most(100) }
   end
 
   describe "associations" do
@@ -57,6 +63,12 @@ describe User do
         expect(user.data[:avatar_url]).to eq(avatar_url)
       end
     end
+
+    describe "after_create_commit" do
+      it "enqueues log status change job" do
+        expect { user.save }.to have_enqueued_job(User::LogStatusChangeJob)
+      end
+    end
   end
 
   describe ".from_omniauth" do
@@ -72,7 +84,7 @@ describe User do
     end
 
     context "when user does not exist" do
-      it "creates a new user" do
+      it "creates a new user", :aggregate_failures do
         expect { described_class.from_omniauth(auth) }.to change(described_class, :count).by(1)
 
         user = described_class.from_omniauth(auth)

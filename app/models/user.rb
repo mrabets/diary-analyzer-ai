@@ -20,47 +20,44 @@
 #  unconfirmed_email      :string
 #  created_at             :datetime         not null
 #  updated_at             :datetime         not null
+#  user_status_id         :bigint           default(1), not null
 #
 # Indexes
 #
 #  index_users_on_email                 (email) UNIQUE
 #  index_users_on_provider_and_uid      (provider,uid) UNIQUE
 #  index_users_on_reset_password_token  (reset_password_token) UNIQUE
+#  index_users_on_user_status_id        (user_status_id)
+#
+# Foreign Keys
+#
+#  fk_rails_...  (user_status_id => user_statuses.id)
 #
 class User < ApplicationRecord
-  # Include default devise modules. Others available are:
-  # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
-  devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable,
-         # Temporarily disable confirmable to avoid sending confirmation email
-         # :confirmable,
-         :omniauthable, omniauth_providers: %i[google_oauth2 github]
+  include StatusManager
+  include Omniauth
 
-  validates :name, presence: true, length: { minimum: 2, maximum: 50 }
+  devise :database_authenticatable, :registerable, :recoverable, :rememberable, :validatable, :omniauthable,
+         omniauth_providers: %i[google_oauth2 github]
 
   has_many :posts, dependent: :destroy, class_name: "Post"
   has_many :messages, dependent: :destroy, class_name: "Message"
   has_many :conversations, foreign_key: :sender_id, dependent: :destroy, inverse_of: :sender, class_name: "Conversation"
-
   has_one_attached :avatar
+
   serialize :data, coder: YAML, type: Hash
 
-  before_save :add_faker_avatar
+  validates :name, presence: true, length: { minimum: 2, maximum: 100 }
 
-  def self.from_omniauth(auth)
-    OmniauthUser.find_or_create(auth)
-  end
-
-  def self.all_except(user)
-    where.not(id: user)
-  end
+  before_save :add_faker_avatar, :set_default_user_status, if: :new_record?
 
   private
 
+  def set_default_user_status
+    self.user_status_id = UserStatus.where(id: UserStatuses::OFFLINE).select(:id).first.id
+  end
+
   def add_faker_avatar
-    # ActiveStorage doesn't support adding attachments from local files yet
-    # avatar.attach(io: URI.parse(Faker::Avatar.image).open, filename: "default_avatar.png", content_type: "image/png")
-    # So I use this link to add faker avatar
     data[:avatar_url] = Faker::Avatar.image
   end
 end

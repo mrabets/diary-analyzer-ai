@@ -29,7 +29,7 @@ class OmniauthUser
   end
 
   def create_omniauth_user
-    User.create(
+    User.create!(
       provider: auth.provider,
       uid: auth.uid,
       name: auth.info.name,

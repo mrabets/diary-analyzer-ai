@@ -1,5 +1,11 @@
 <div class="container mt-3">
-  <h2 class="mb-4">Conversation with <%= @presenter.companion.name %></h2>
+  <h2 class="mb-4">
+    Conversation with <%= @presenter.companion.name %>
+
+    <%= turbo_stream_from "user_status" %>
+
+    <%= render "users/status", user: @presenter.companion, online: true %>
+  </h2>
 
   <%= turbo_stream_from @conversation %>
 
