@@ -9,7 +9,7 @@ RSpec.describe ConversationsController do
 
   describe "GET #show" do
     let(:conversation) { create(:conversation, sender: user, receiver:) }
-    let!(:messages) { create_list(:message, 15, conversation:) }
+    let!(:messages) { create_list(:message, 15, conversation:) } # rubocop:disable FactoryBot/ExcessiveCreateList
     let(:page) { 1 }
 
     before { get :show, params: { id: conversation.id, page: } }
