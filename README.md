@@ -1,3 +1,5 @@
+[![codecov](https://codecov.io/gh/mrabets/diary-analyzer-ai/graph/badge.svg?token=G7566TBH6P)](https://codecov.io/gh/mrabets/diary-analyzer-ai)
+
 # Diary Analyzer AI
 
 <img align="right" src="/app/assets/images/logo.png" width="150" height="auto">
