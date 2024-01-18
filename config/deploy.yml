@@ -3,7 +3,13 @@ service: diary-analyzer-ai
 image: mrabets/diary-analyzer-ai
 
 servers:
-  - 157.230.118.51
+  web:
+    hosts:
+      - 157.230.118.51
+  job:
+    hosts:
+      - 157.230.118.51
+    cmd: bundle exec sidekiq -q default -q mailers
 
 registry:
   username: mrabets
