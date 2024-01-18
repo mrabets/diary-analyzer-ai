@@ -1,8 +1,9 @@
 [![codecov](https://codecov.io/gh/mrabets/diary-analyzer-ai/graph/badge.svg?token=G7566TBH6P)](https://codecov.io/gh/mrabets/diary-analyzer-ai)
+![Build](https://github.com/mrabets/diary-analyzer-ai/actions/workflows/rubyonrails.yml/badge.svg)
 
 # Diary Analyzer AI
 
-<img align="right" src="/app/assets/images/logo.png" width="150" height="auto">
+<img align="right" src="/app/assets/images/logo.svg" width="150" height="auto">
 
 **Diary Analyzer AI** is an advanced tool powered by artificial intelligence, designed for analyzing and interpreting personal diary entries. It provides users with valuable insights from their daily recordings, identifying key themes, moods, and trends, aiding in better self-understanding and personal growth.
 
