@@ -63,6 +63,9 @@ gem "omniauth-rails_csrf_protection", "~> 1.0"
 gem "open-uri"
 gem "pagy", "~> 6.2"
 gem "sidekiq", "~> 7.2"
+gem "simplecov"
+gem "simplecov-cobertura"
+
 gem "strong_migrations"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
@@ -102,6 +105,5 @@ group :test do
   gem "rails-controller-testing"
   gem "rspec-rails", "~> 6.1.0"
   gem "shoulda-matchers", "~> 5.0"
-  gem "simplecov", require: false
   gem "test-prof"
 end
