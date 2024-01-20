@@ -27,6 +27,7 @@ env:
     - SERVER_HOST
     - SENDGRID_API_KEY
     - REDIS_URL
+    - ELASTICSEARCH_URL
 
 accessories:
   db:
@@ -47,6 +48,18 @@ accessories:
     port: 6379
     directories:
       - data:/data
+  elasticsearch:
+    image: elasticsearch:7.10.1
+    host: 157.230.118.51
+    port: 9200
+    env:
+      clear:
+        discovery.type: single-node
+        bootstrap.memory_lock: true
+        xpack.security.enabled: "false"
+        ES_JAVA_OPTS: -Xms512m -Xmx512m
+    directories:
+      - data:/var/lib/elasticsearch/data
 
 
 # Inject ENV variables into containers (secrets come from .env).

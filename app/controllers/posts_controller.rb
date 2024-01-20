@@ -58,7 +58,12 @@ class PostsController < ApplicationController
   private
 
   def set_posts_with_pagy
-    @pagy, @posts = pagy(Post.all, items: 5)
+    @pagy, @posts = pagy(posts_to_show, items: 5)
+  end
+
+  def posts_to_show
+    posts = params[:search_query].present? ? Post.search(params[:search_query]) : Post.all
+    posts.order(created_at: :desc)
   end
 
   def set_post

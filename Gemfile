@@ -52,6 +52,9 @@ gem "better_html"
 gem "database_validations"
 gem "devise", "~> 4.9"
 gem "dotenv-rails"
+gem "elasticsearch-model", "~> 7.2"
+gem "elasticsearch-persistence", "~> 7.2"
+gem "elasticsearch-rails", "~> 7.2"
 gem "enumerate_it"
 gem "erb_lint", require: false
 gem "faker"
@@ -65,7 +68,6 @@ gem "pagy", "~> 6.2"
 gem "sidekiq", "~> 7.2"
 gem "simplecov"
 gem "simplecov-cobertura"
-
 gem "strong_migrations"
 
 # Use Active Storage variants [https://guides.rubyonrails.org/active_storage_overview.html#transforming-images]
@@ -106,4 +108,5 @@ group :test do
   gem "rspec-rails", "~> 6.1.0"
   gem "shoulda-matchers", "~> 5.0"
   gem "test-prof"
+  gem "webmock"
 end
