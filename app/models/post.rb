@@ -19,6 +19,8 @@
 #  fk_rails_...  (user_id => users.id)
 #
 class Post < ApplicationRecord
+  include Searchable
+
   validates :title, :content, presence: true
   validates :title, length: { minimum: 2, maximum: 200 }
 

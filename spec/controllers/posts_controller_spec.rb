@@ -19,6 +19,24 @@ RSpec.describe PostsController do
       get_index
       expect(assigns(:posts)).to eq([post])
     end
+
+    context "when search_query is present" do
+      subject(:get_index) { get :index, params: { search_query: } }
+
+      let(:search_query) { "search_query" }
+
+      let!(:first_searched_post) { create(:post, user:) }
+      let!(:second_searched_post) { create(:post, user:) }
+
+      before do
+        allow(Post).to receive(:search).and_return(Post.where(id: [first_searched_post.id, second_searched_post.id]))
+      end
+
+      it "returns posts" do
+        get_index
+        expect(assigns(:posts)).to eq([second_searched_post, first_searched_post])
+      end
+    end
   end
 
   describe "GET #show" do
