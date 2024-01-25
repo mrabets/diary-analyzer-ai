@@ -20,9 +20,9 @@ module Post::Searchable
       include: {
         rich_text_content: { only: :body }
       }
-    ).merge!(
-      content: content.to_plain_text
-    )
+    ).tap do |data|
+      data[:content] = content.to_plain_text
+    end
   end
 
   class_methods do

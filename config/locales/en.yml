@@ -28,6 +28,11 @@
 #       enabled: "ON"
 
 en:
+  payments:
+    success: "Purchase Successful"
+    cancel: "Purchase Unsuccessful"
+  subscriptions:
+    subscription_canceled: "Subscription Canceled"
   posts:
     create:
       success: "Post was successfully created."
