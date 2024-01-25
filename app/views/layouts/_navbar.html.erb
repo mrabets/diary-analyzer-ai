@@ -36,6 +36,11 @@
                   <li>
                     <%= link_to "Profile", profile_path, class: "dropdown-item" %>
                   </li>
+                  <% unless current_user.subscription&.premium? %>
+                    <li>
+                      <%= button_to "AI Premium", subscriptions_path, class: "dropdown-item btn btn-dark btn-gradient", method: :post, form: { data: { turbo: false } } %>
+                    </li>
+                  <% end %>
                   <li>
                     <hr class="dropdown-divider">
                   </li>

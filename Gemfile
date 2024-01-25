@@ -110,3 +110,5 @@ group :test do
   gem "test-prof"
   gem "webmock"
 end
+
+gem "stripe", "~> 10.6"

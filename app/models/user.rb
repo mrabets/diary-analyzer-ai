@@ -43,6 +43,7 @@ class User < ApplicationRecord
   has_many :posts, dependent: :destroy, class_name: "Post"
   has_many :messages, dependent: :destroy, class_name: "Message"
   has_many :conversations, foreign_key: :sender_id, dependent: :destroy, inverse_of: :sender, class_name: "Conversation"
+  has_one :subscription, dependent: :destroy, class_name: "Subscription"
   has_one_attached :avatar
 
   serialize :data, coder: YAML, type: Hash
