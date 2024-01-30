@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 class Stripe::WebhookService
+  extend Dry::Initializer
+
+  option :event, reader: :private
+
   def self.call(event)
     new(event).call
   end
@@ -19,14 +23,10 @@ class Stripe::WebhookService
     end
   end
 
-  private
-
   EVENT_HANDLER_MAP = {
     "customer.subscription.deleted" => Stripe::SubscriptionDeletedHandler,
     "checkout.session.completed" => Stripe::CheckoutSessionCompletedHandler
   }.freeze
 
   private_constant :EVENT_HANDLER_MAP
-
-  attr_reader :event
 end

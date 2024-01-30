@@ -9,25 +9,26 @@ describe MessagesController do
     let(:receiver) { create(:user) }
     let(:conversation) { create(:conversation, sender: user, receiver:) }
     let(:params) { { conversation_id: conversation.id, message: { body: Faker::Lorem.sentence } } }
-    let(:message) { build_stubbed(:message, conversation:, user:) }
+    let(:message) { Success(build_stubbed(:message, conversation:, user:)) }
 
-    before { allow(MessageCreator).to receive(:call).and_return(message) }
+    before do
+      allow(MessageCreator).to receive(:call).and_return(message)
+
+      post :create, params:, format: :turbo_stream
+    end
 
     it "broadcasts message", :aggregate_failures do
-      post :create, params:, format: :turbo_stream
-
       expect(MessageCreator).to have_received(:call)
       expect(response).to have_http_status(:success)
     end
 
     context "when message has not been saved" do
-      let(:message) { nil }
+      let(:message) { Failure("error") }
 
       it "redirects back", :aggregate_failures do
-        post :create, params:, format: :turbo_stream
-
         expect(MessageCreator).to have_received(:call)
         expect(response).to redirect_to(conversation_path(conversation))
+        expect(flash[:alert]).to eq("error")
       end
     end
   end

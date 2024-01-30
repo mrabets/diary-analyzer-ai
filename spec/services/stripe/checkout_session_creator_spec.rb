@@ -51,4 +51,15 @@ describe Stripe::CheckoutSessionCreator do
 
     expect(Stripe::Checkout::Session).to have_received(:create).with(session_params)
   end
+
+  context "when Stripe::InvalidRequestError is raised" do
+    before do
+      allow(Stripe::Checkout::Session).to receive(:create).with(session_params)
+                                                          .and_raise(Stripe::InvalidRequestError.new("error", {}))
+    end
+
+    it "returns a Failure" do
+      expect(call).to be_failure
+    end
+  end
 end

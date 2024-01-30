@@ -20,7 +20,9 @@ describe MessageCreator do
     context "when body param is empty" do
       let(:body) { "" }
 
-      it { is_expected.to be_nil }
+      it "returns failure" do
+        expect(call).to be_failure
+      end
     end
   end
 end

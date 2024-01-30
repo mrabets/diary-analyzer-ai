@@ -32,3 +32,6 @@ Style/EmptyMethod:
 
 RSpec/ExampleLength:
   Max: 10
+
+RSpec/NestedGroups:
+  Max: 5

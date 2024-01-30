@@ -1,6 +1,10 @@
 # frozen_string_literal: true
 
 class Stripe::BaseEventHandler
+  extend Dry::Initializer
+
+  param :event, reader: :private
+
   def self.call(event)
     new(event).call
   end
@@ -12,8 +16,4 @@ class Stripe::BaseEventHandler
   def call
     raise NotImplementedError
   end
-
-  private
-
-  attr_reader :event
 end

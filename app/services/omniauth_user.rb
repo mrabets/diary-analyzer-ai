@@ -1,6 +1,11 @@
 # frozen_string_literal: true
 
 class OmniauthUser
+  include Dry::Monads[:result, :try]
+  extend Dry::Initializer
+
+  option :auth, reader: :private
+
   def self.find_or_create(auth)
     new(auth).find_or_create
   end
@@ -10,32 +15,33 @@ class OmniauthUser
   end
 
   def find_or_create
-    return omniauth_user if omniauth_user
-    return registered_user if registered_user
-
-    create_omniauth_user
+    find_omniauth_user
+      .or { find_registered_user }
+      .or { create_omniauth_user }
   end
 
   private
 
-  attr_reader :auth
-
-  def omniauth_user
-    @omniauth_user ||= User.find_by(provider: auth.provider, uid: auth.uid)
+  def find_omniauth_user
+    user = User.find_by(provider: auth.provider, uid: auth.uid)
+    user ? Success(user) : Failure(:omniauth_user_not_found)
   end
 
-  def registered_user
-    @registered_user ||= User.find_by(email: auth.info.email)
+  def find_registered_user
+    user = User.find_by(email: auth.info.email)
+    user ? Success(user) : Failure(:registered_user_not_found)
   end
 
   def create_omniauth_user
-    User.create!(
-      provider: auth.provider,
-      uid: auth.uid,
-      name: auth.info.name,
-      email: auth.info.email,
-      password: Devise.friendly_token[0, 20],
-      confirmed_at: Time.zone.now
-    )
+    Try[ActiveRecord::RecordInvalid] do
+      User.create!(
+        provider: auth.provider,
+        uid: auth.uid,
+        name: auth.info.name,
+        email: auth.info.email,
+        password: Devise.friendly_token[0, 20],
+        confirmed_at: Time.zone.now
+      )
+    end.to_result
   end
 end

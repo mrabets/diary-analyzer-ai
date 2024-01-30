@@ -4,14 +4,20 @@ class SubscriptionsController < ApplicationController
   def create
     session = Stripe::CheckoutSessionCreator.call(current_user)
 
-    redirect_to session.url, status: :see_other, allow_other_host: true
+    if session.success?
+      redirect_to session.value!.url, status: :see_other, allow_other_host: true
+    else
+      redirect_to profile_path, alert: session.failure
+    end
   end
 
   def cancel
-    Stripe::SubscriptionCancelService.call(current_user)
+    result = Stripe::SubscriptionCancelService.call(current_user)
 
-    redirect_to profile_path, notice: t(".subscription_canceled")
-  rescue Stripe::StripeError => e
-    redirect_to profile_path, alert: e.message
+    if result.success?
+      redirect_to profile_path, notice: t(".subscription_canceled")
+    else
+      redirect_to profile_path, alert: result.failure
+    end
   end
 end

@@ -1,6 +1,14 @@
 # frozen_string_literal: true
 
 class MessageCreator
+  include Dry::Monads[:result, :try]
+  include Dry.Types
+  extend Dry::Initializer
+
+  option :conversation, type: Instance(Conversation), reader: :private
+  option :user, type: Instance(User), reader: :private
+  option :params, type: Types::Hash, reader: :private
+
   def self.call(conversation:, user:, params:)
     new(conversation:, user:, params:).call
   end
@@ -12,16 +20,18 @@ class MessageCreator
   end
 
   def call
-    message = Message.new(
-      conversation_id: conversation.id,
-      user_id: user.id,
-      body: params.fetch(:body)
-    )
-
-    message.save ? message : nil
+    create_message
   end
 
   private
 
-  attr_reader :conversation, :user, :params
+  def create_message
+    Try[ActiveRecord::RecordInvalid] do
+      Message.create!(
+        conversation_id: conversation.id,
+        user_id: user.id,
+        body: params.fetch(:body)
+      )
+    end.to_result
+  end
 end
