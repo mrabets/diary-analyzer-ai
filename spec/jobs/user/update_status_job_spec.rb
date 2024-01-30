@@ -3,7 +3,7 @@
 require "rails_helper"
 
 describe User::UpdateStatusJob do
-  let(:user) { create(:user) }
+  include_context "user"
 
   describe "#perform" do
     let(:online) { true }

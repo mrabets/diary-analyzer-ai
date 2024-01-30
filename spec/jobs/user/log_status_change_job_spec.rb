@@ -3,7 +3,7 @@
 require "rails_helper"
 
 describe User::LogStatusChangeJob do
-  let(:user) { create(:user) }
+  include_context "user"
 
   describe "#perform" do
     let(:user_status_id) { UserStatuses::ONLINE }

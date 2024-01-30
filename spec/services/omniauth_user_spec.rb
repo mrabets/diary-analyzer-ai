@@ -19,7 +19,7 @@ describe OmniauthUser do
       let!(:user) { create(:user, provider: auth_hash.provider, uid: user_uid) }
 
       it "returns the existing user" do
-        expect(find_or_create).to eq(user)
+        expect(find_or_create).to eq(Success(user))
       end
     end
 
@@ -27,7 +27,7 @@ describe OmniauthUser do
       let!(:user) { create(:user, email: auth_hash.info.email) }
 
       it "returns the existing registered user" do
-        expect(find_or_create).to eq(user)
+        expect(find_or_create).to eq(Success(user))
       end
     end
 
@@ -38,11 +38,25 @@ describe OmniauthUser do
       end
 
       it "returns a new user with the correct attributes" do
-        user = find_or_create
+        user = find_or_create.value!
         expect(user.provider).to eq(auth_hash.provider)
         expect(user.uid).to eq(auth_hash.uid)
         expect(user.email).to eq(auth_hash.info.email)
         expect(user.name).to eq(auth_hash.info.name)
+      end
+    end
+
+    context "when user creation fails" do
+      let(:auth_hash) do
+        OmniAuth::AuthHash.new({
+                                 provider: "provider_name",
+                                 uid: user_uid,
+                                 info: { email: "", name: "John Doe" }
+                               })
+      end
+
+      it "returns a failure" do
+        expect(find_or_create).to be_failure
       end
     end
   end

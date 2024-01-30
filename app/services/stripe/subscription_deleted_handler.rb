@@ -1,8 +1,10 @@
 # frozen_string_literal: true
 
 class Stripe::SubscriptionDeletedHandler < Stripe::BaseEventHandler
+  include Dry::Monads[:result, :try]
+
   def call
-    user_subscription&.update!(status: stripe_subscription.status)
+    user_subscription.bind(method(:update_subscription_status))
   end
 
   private
@@ -12,6 +14,10 @@ class Stripe::SubscriptionDeletedHandler < Stripe::BaseEventHandler
   end
 
   def user_subscription
-    Subscription.find_by(stripe_subscription_ref: stripe_subscription.id)
+    Try[ActiveRecord::RecordNotFound] { Subscription.find_by!(stripe_subscription_ref: stripe_subscription.id) }
+  end
+
+  def update_subscription_status(subscription)
+    Try[ArgumentError] { subscription.update!(status: stripe_subscription.status) }
   end
 end

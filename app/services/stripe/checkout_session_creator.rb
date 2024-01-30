@@ -1,6 +1,12 @@
 # frozen_string_literal: true
 
 class Stripe::CheckoutSessionCreator
+  include Dry::Monads[:result, :try]
+  include Dry.Types()
+  extend Dry::Initializer
+
+  option :user, type: Instance(User), reader: :private
+
   def self.call(user)
     new(user).call
   end
@@ -10,12 +16,10 @@ class Stripe::CheckoutSessionCreator
   end
 
   def call
-    Stripe::Checkout::Session.create(session_params)
+    Try[Stripe::InvalidRequestError] { Stripe::Checkout::Session.create(session_params) }.to_result
   end
 
   private
-
-  attr_reader :user
 
   def session_params
     {

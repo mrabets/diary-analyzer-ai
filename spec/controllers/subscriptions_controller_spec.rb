@@ -10,7 +10,7 @@ describe SubscriptionsController do
     let(:stripe_checkout_session) { double("Stripe::CheckoutSession", url: "http://example.com/stripe_session") }
 
     before do
-      allow(Stripe::CheckoutSessionCreator).to receive(:call).and_return(stripe_checkout_session)
+      allow(Stripe::CheckoutSessionCreator).to receive(:call).and_return(Success(stripe_checkout_session))
 
       post :create
     end
@@ -26,11 +26,10 @@ describe SubscriptionsController do
   end
 
   describe "POST #cancel" do
-    let(:stripe_subscription) { double("Stripe::Subscription") }
+    let(:stripe_subscription) { Success(nil) }
 
     context "when Stripe cancels the subscription" do
       before do
-        allow(Stripe::SubscriptionCancelService).to receive(:call)
         allow(Stripe::SubscriptionCancelService).to receive(:call).and_return(stripe_subscription)
 
         post :cancel
@@ -44,19 +43,14 @@ describe SubscriptionsController do
         expect(response).to redirect_to(profile_url)
         expect(flash[:notice]).to be_present
       end
-    end
 
-    context "when Stripe raises an error" do
-      before do
-        allow(Stripe::SubscriptionCancelService).to receive(:call)
-          .and_raise(Stripe::StripeError.new("stripe error"))
+      context "when raises an error" do
+        let(:stripe_subscription) { Failure("Something went wrong") }
 
-        post :cancel
-      end
-
-      it "redirects to the profile page with an alert" do
-        expect(response).to redirect_to(profile_url)
-        expect(flash[:alert]).to be_present
+        it "redirects to the profile page with an alert" do
+          expect(response).to redirect_to(profile_url)
+          expect(flash[:alert]).to be_present
+        end
       end
     end
   end
