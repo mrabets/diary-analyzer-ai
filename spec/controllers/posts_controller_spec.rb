@@ -150,4 +150,45 @@ RSpec.describe PostsController do
       expect(response).to redirect_to(posts_url)
     end
   end
+
+  describe "POST #analyze" do
+    subject(:post_analyze) { post :analyze, params: { id: post_record.id } }
+
+    let(:post_record) { create(:post, user:) }
+
+    before { allow(DiaryAnalyzer).to receive(:call).with(post: post_record, user:) }
+
+    it "redirects to post", :aggregate_failures do
+      post_analyze
+
+      expect(response).to redirect_to(post_record)
+      expect(DiaryAnalyzer).to have_received(:call)
+    end
+
+    context "when DiaryAnalyzer raises AnalysisError" do
+      before { allow(DiaryAnalyzer).to receive(:call).and_raise(AnalysisError, analysis_error_message) }
+
+      let(:analysis_error_message) { "AnalysisError" }
+
+      it "redirects to the post with an alert" do
+        post_analyze
+
+        expect(response).to redirect_to(post_record)
+        expect(flash[:alert]).to eq(analysis_error_message)
+      end
+    end
+
+    context "when DiaryAnalyzer raises PremiumNotFoundError" do
+      before { allow(DiaryAnalyzer).to receive(:call).and_raise(PremiumNotFoundError, analysis_error_message) }
+
+      let(:analysis_error_message) { "AnalysisError" }
+
+      it "redirects to the post with an alert" do
+        post_analyze
+
+        expect(response).to redirect_to(post_record)
+        expect(flash[:alert]).to eq(analysis_error_message)
+      end
+    end
+  end
 end

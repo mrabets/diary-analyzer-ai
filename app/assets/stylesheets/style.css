@@ -65,3 +65,32 @@ body {
 .btn-gradient:hover {
     transform: scale(1.05);
 }
+
+.btn-analyze {
+    background-image: linear-gradient(to right, #007bff, #6610f2);
+    border: 0;
+    color: white;
+    padding: 10px 20px;
+    border-radius: 30px;
+    font-size: 16px;
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    transition: transform 0.3s ease;
+}
+
+.btn-analyze:hover {
+    transform: translateY(-2px);
+    background-image: linear-gradient(to right, #0056b3, #520dab);
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
+}
+
+.icon-container {
+    display: flex;
+    align-items: center;
+}
+
+.fa-robot {
+    color: #ffffff;
+}
+

@@ -10,5 +10,59 @@
     </div>
 
     <%= post.content %>
+
+    <div class="py-3 d-flex justify-content-center">
+      <div class="w-100">
+        <div class="border-bottom"></div>
+      </div>
+    </div>
+
+    <% if post.data[:analyze_result].present? %>
+      <div class="d-flex justify-content-center">
+        <button type="button" class="btn-analyze" data-bs-toggle="modal" data-bs-target="#analyzeModal">
+          <i class="fas fa-chart-line"></i> Show AI analysis results
+        </button>
+      </div>
+
+      <div class="modal fade" id="analyzeModal" tabindex="-1" aria-labelledby="analyzeModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="analyzeModalLabel">AI Analysis results</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <div>
+                <h5>Emotions</h5>
+                <p><%= emotions(post) %> </p>
+              </div>
+              <div>
+                <h5>Keywords</h5>
+                <p><%= keywords(post) %></p>
+              </div>
+              <div>
+                <h5>Recommendations</h5>
+                <p><%= recommendations(post) %></p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+  <% else %>
+      <div class="d-flex justify-content-center">
+        <%= form_with url: analyze_post_path(@post), method: :post, local: true, class: "analyze-form",
+                      data: { controller: "spinner", action: "turbo:submit-start->spinner#showSpinner" } do %>
+          <button type="submit" class="btn-analyze">
+
+            <span class="icon-container">
+              <i id="icon-robot" class="fa-solid fa-robot fa-fw"></i>
+              <i id="icon-spinner" class="fa fa-spinner fa-spin" style="display: none;"></i>
+            </span>
+            <span class="text">AI Analyze</span>
+          </button>
+
+        <% end %>
+      </div>
+  <% end %>
   </article>
 </div>

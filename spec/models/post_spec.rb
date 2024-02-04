@@ -5,6 +5,7 @@
 # Table name: posts
 #
 #  id         :bigint           not null, primary key
+#  data       :text
 #  title      :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
@@ -70,6 +71,28 @@ describe Post do
 
     it "returns post as json" do
       expect(as_indexed_json.with_indifferent_access).to include(expected_json.with_indifferent_access)
+    end
+  end
+
+  describe "callbacks" do
+    describe "before_save" do
+      let(:post) { build(:post, data:) }
+      let(:data) do
+        {
+          analyze_result: {
+            emotions: ["happy"],
+            keywords: %w[happy job],
+            recommendations: ["Smile. Find a new job.", "Go to specialist"]
+          }
+        }
+      end
+
+      it "resets analyze result if content changed" do
+        post.content.body = "new content"
+        post.save
+
+        expect(post.data[:analyze_result]).to be_nil
+      end
     end
   end
 end

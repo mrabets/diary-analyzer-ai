@@ -40,5 +40,12 @@ en:
       success: "Post was successfully updated."
     destroy:
       success: "Post was successfully destroyed."
+    analyze:
+      success: "Analyze successfully."
+      premium_not_found: "You need to upgrade to premium to use this feature."
   device_mailer:
     welcome_subject: "Welcome to Diary Analyzer AI!"
+  faraday_api_client:
+    failure_message: "API doesn't available now. Try again later."
+  open_ai_api_client:
+    failure_message: "OpenAI API doesn't available now. Try again later."
