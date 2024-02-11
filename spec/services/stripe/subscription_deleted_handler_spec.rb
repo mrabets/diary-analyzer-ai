@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-# rubocop:disable RSpec/VerifiedDoubles, RSpec/MultipleMemoizedHelpers
+# rubocop:disable RSpec/VerifiedDoubles
 describe Stripe::SubscriptionDeletedHandler do
   let(:event) { double(Stripe::Event, type: event_type, data: event_data) }
   let(:event_type) { "customer.subscription.deleted" }

@@ -29,8 +29,6 @@ class Post < ApplicationRecord
   has_rich_text :content
   db_belongs_to :user
 
-  # serialize :data, coder: JSON, type: Hash
-  # store_accessor :data, :emotions, :keywords, :recommendations
   serialize :data, coder: SymbolKeysSerializer
 
   before_save :reset_analyze_result, if: :content_changed?

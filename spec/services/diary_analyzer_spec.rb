@@ -22,10 +22,13 @@ describe DiaryAnalyzer do
         ]
       }
     end
+    let(:analysis_result_response) do
+      instance_double(Faulty::Result, get: analysis_result, ok?: true)
+    end
 
     before do
       allow(OpenAi::ApiClient).to receive(:new).and_return(open_ai_api_client)
-      allow(open_ai_api_client).to receive(:analyze_diary).and_return(analysis_result)
+      allow(open_ai_api_client).to receive(:analyze_diary).and_return(analysis_result_response)
     end
 
     context "when user has premium subscription" do
@@ -46,7 +49,10 @@ describe DiaryAnalyzer do
       end
 
       context "when analysis result has an error" do
-        let(:analysis_result) { { error: "Error" } }
+        let(:error) { instance_double(Faulty::CircuitError, message: "Error") }
+        let(:analysis_result_response) do
+          instance_double(Faulty::Result, error:, ok?: false)
+        end
 
         it "raises AnalysisError" do
           expect { call }.to raise_error(AnalysisError, "Error")

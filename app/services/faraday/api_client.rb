@@ -83,7 +83,7 @@ class Faraday::ApiClient
 
         process_response(response)
       end
-    end.or_default({ error: failure_message })
+    end
   end
 
   def process_response(response)
@@ -92,9 +92,5 @@ class Faraday::ApiClient
 
   def cache
     DEFAULT_CACHE_KEY
-  end
-
-  def failure_message
-    t("faraday_api_client.failure_message")
   end
 end

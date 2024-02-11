@@ -1,30 +1,42 @@
 # frozen_string_literal: true
 
 class DiaryAnalyzer
+  extend Dry::Initializer
+  include Dry.Types()
+
+  option :post, type: Types.Instance(Post)
+  option :user, type: Types.Instance(User)
+
   def self.call(post:, user:)
     new(post:, user:).call
   end
 
-  def initialize(post:, user:)
-    @post = post
-    @user = user
-  end
-
   def call
-    raise PremiumNotFoundError, I18n.t("posts.analyze.premium_not_found") unless user.subscription&.premium?
-    raise AnalysisError, analysis_result[:error] if analysis_result[:error]
+    check_premium_user!
+    check_analysis_response!
 
     @analysis_result_text = analysis_result.dig("choices", 0, "text")
-
-    post.update!(data: analyze_data_to_save)
+    post.update!(data: { analyze_result: analyze_info })
   end
 
   private
 
-  attr_reader :post, :user, :analysis_result_text
+  attr_reader :post, :user
+
+  def check_premium_user!
+    raise PremiumNotFoundError, I18n.t("posts.analyze.premium_not_found") unless user.subscription&.premium?
+  end
+
+  def check_analysis_response!
+    raise AnalysisError, analysis_result_response.error.message unless analysis_result_response.ok?
+  end
 
   def analysis_result
-    @analysis_result ||= open_ai_api_client.analyze_diary
+    analysis_result_response.get
+  end
+
+  def analysis_result_response
+    @analysis_result_response ||= open_ai_api_client.analyze_diary
   end
 
   def open_ai_api_client
@@ -35,29 +47,14 @@ class DiaryAnalyzer
     post.content.to_plain_text.squish
   end
 
-  def analyze_data_to_save
-    {
-      analyze_result: {
-        emotions: analyze_info[:emotions],
-        keywords: analyze_info[:keywords],
-        recommendations: analyze_info[:recommendations]
-      }
-    }
-  end
-
   def analysis_result_parts
     analysis_result_text.split(/\n\d\.\s*/).reject(&:empty?)
   end
 
   def analyze_info
     @analyze_info ||= analysis_result_parts.each_with_object({}) do |part, info|
-      case part
-      when section_regex[:emotions]
-        info[:emotions] = extract_emotions(part)
-      when section_regex[:keywords]
-        info[:keywords] = extract_keywords(part)
-      when section_regex[:recommendations]
-        info[:recommendations] = extract_recommendations(part)
+      section_regex.each do |key, regex|
+        info[key] = send(:"extract_#{key}", part) if part.match?(regex)
       end
     end
   end
@@ -82,5 +79,9 @@ class DiaryAnalyzer
       keywords: /keywords:\s*/i,
       recommendations: /recommendations:\s*/i
     }
+  end
+
+  def analysis_result_text
+    @analysis_result_text ||= analysis_result.dig("choices", 0, "text")
   end
 end

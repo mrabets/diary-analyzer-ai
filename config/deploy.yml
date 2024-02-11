@@ -38,6 +38,7 @@ env:
     - STRIPE_SECRET_KEY
     - STRIPE_SUBSCRIPTION_PLAN_ID
     - STRIPE_ENDPOINT_SECRET
+    - OPEN_AI_API_KEY
 
 accessories:
   db:

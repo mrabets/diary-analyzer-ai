@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-# rubocop:disable RSpec/VerifiedDoubles, RSpec/MultipleMemoizedHelpers:
+# rubocop:disable RSpec/VerifiedDoubles, :
 describe Stripe::WebhookService do
   subject(:call) { described_class.call(event) }
 

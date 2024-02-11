@@ -13,7 +13,7 @@ describe OpenAi::ApiClient do
     it "sends a post request to analyze diary text", :vcr do
       VCR.use_cassette("open_ai_api_client/analyze_diary") do
         response = api_client.analyze_diary
-        text = response["choices"].first["text"]
+        text = response.or_default["choices"].first["text"]
 
         expect(text).to include("Emotions")
         expect(text).to include("Keywords")
@@ -41,7 +41,7 @@ describe OpenAi::ApiClient do
 
       it "returns the default error message" do
         response = api_client.analyze_diary
-        expect(response).to eq({ error: I18n.t("open_ai_api_client.failure_message") })
+        expect(response).to be_error
       end
     end
   end

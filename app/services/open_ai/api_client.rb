@@ -32,20 +32,17 @@ class OpenAi::ApiClient < Faraday::ApiClient
   end
 
   def prepared_prompt
-    "This is a diary text: '#{diary_text}'.\n\n" \
-      "Determine which emotions are predominated," \
-      "highlight main keywords from the text and" \
-      "give recommendations to improve the mood. Follow the format: \n" \
-      "1. Emotions: \n" \
-      "2. Keywords: \n" \
-      "3. Recommendations: \n"
+    <<~PROMPT
+      This is a diary text: '#{diary_text}'.
+
+      Determine which emotions are predominated, highlight main keywords from the text and give recommendations to improve the mood. Follow the format:
+      1. Emotions:
+      2. Keywords:
+      3. Recommendations:
+    PROMPT
   end
 
   def cache
-    Digest::SHA256.hexdigest(diary_text)
-  end
-
-  def failure_message
-    I18n.t("open_ai_api_client.failure_message")
+    "diary_analysis_#{Digest::SHA256.hexdigest(diary_text)}"
   end
 end
