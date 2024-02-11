@@ -35,11 +35,13 @@ describe DiaryAnalyzer do
         call
 
         expect(post.reload.data).to eq(
-          analyze_result: {
-            emotions: ["happy"],
-            keywords: %w[happy job],
-            recommendations: ["Smile. Find a new job.", "Go to specialist"]
-          }
+          {
+            analyze_result: {
+              emotions: ["happy"],
+              keywords: %w[happy job],
+              recommendations: ["Smile. Find a new job.", "Go to specialist"]
+            }
+          }.deep_stringify_keys
         )
       end
 
