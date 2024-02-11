@@ -66,6 +66,7 @@ gem "faker"
 gem "faraday"
 gem "faraday-net_http_persistent", "~> 2.0"
 gem "faulty"
+gem "nokogiri", ">= 1.16.2"
 gem "oj"
 gem "omniauth", "~> 2.1"
 gem "omniauth-github", "~> 2.0"
@@ -117,6 +118,7 @@ group :test do
   gem "rspec-rails", "~> 6.1.0"
   gem "shoulda-matchers", "~> 5.0"
   gem "test-prof"
+  gem "vcr"
   gem "webmock"
 end
 

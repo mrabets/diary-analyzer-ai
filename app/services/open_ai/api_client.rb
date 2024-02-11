@@ -11,8 +11,7 @@ class OpenAi::ApiClient < Faraday::ApiClient
 
   private
 
-  delegate :api_key,
-           :model,
+  delegate :model,
            :max_tokens,
            :temperature,
            :top_p,
