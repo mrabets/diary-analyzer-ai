@@ -4,7 +4,6 @@ require "active_support/core_ext/integer/time"
 
 Rails.application.routes.default_url_options[:host] = "localhost:3000"
 
-# rubocop:disable Metrics/BlockLength
 Rails.application.configure do
   config.after_initialize do
     Bullet.enable        = true
@@ -104,4 +103,3 @@ Rails.application.configure do
   # Raise error when a before_action's only/except options reference missing actions
   config.action_controller.raise_on_missing_callback_actions = true
 end
-# rubocop:enable Metrics/BlockLength

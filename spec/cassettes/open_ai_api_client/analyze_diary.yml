@@ -1,0 +1,105 @@
+---
+http_interactions:
+- request:
+    method: post
+    uri: https://api.openai.com/v1/completions
+    body:
+      encoding: UTF-8
+      string: '{"prompt":"This is a diary text: ''Today was a tough day.''.\n\nDetermine
+        which emotions are predominated,highlight main keywords from the text andgive
+        recommendations to improve the mood. Follow the format: \n1. Emotions: \n2.
+        Keywords: \n3. Recommendations: \n","model":"gpt-3.5-turbo-instruct","max_tokens":250,"temperature":0.3,"top_p":1.0,"frequency_penalty":0.0,"presence_penalty":0.0}'
+    headers:
+      Content-Type:
+      - application/json
+      Authorization:
+      - Bearer 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
+      User-Agent:
+      - Faraday v2.9.0
+      Accept-Encoding:
+      - gzip;q=1.0,deflate;q=0.6,identity;q=0.3
+      Accept:
+      - "*/*"
+      Connection:
+      - keep-alive
+      Keep-Alive:
+      - '30'
+  response:
+    status:
+      code: 200
+      message: OK
+    headers:
+      Date:
+      - Sun, 11 Feb 2024 06:08:06 GMT
+      Content-Type:
+      - application/json
+      Transfer-Encoding:
+      - chunked
+      Connection:
+      - keep-alive
+      Access-Control-Allow-Origin:
+      - "*"
+      Cache-Control:
+      - no-cache, must-revalidate
+      Openai-Model:
+      - gpt-3.5-turbo-instruct
+      Openai-Organization:
+      - user-zxsdaufdqsubvvfs1dzxtxgk
+      Openai-Processing-Ms:
+      - '1197'
+      Openai-Version:
+      - '2020-10-01'
+      Strict-Transport-Security:
+      - max-age=15724800; includeSubDomains
+      X-Ratelimit-Limit-Requests:
+      - '3000'
+      X-Ratelimit-Limit-Tokens:
+      - '250000'
+      X-Ratelimit-Remaining-Requests:
+      - '2999'
+      X-Ratelimit-Remaining-Tokens:
+      - '249690'
+      X-Ratelimit-Reset-Requests:
+      - 20ms
+      X-Ratelimit-Reset-Tokens:
+      - 74ms
+      X-Request-Id:
+      - req_7f794312a1fe0e89faab74ae6358ef22
+      Cf-Cache-Status:
+      - DYNAMIC
+      Set-Cookie:
+      - __cf_bm=k4w9PyHFtXTupZlDm4Bjkri6WU6SjfsW.MOtsmsWbEk-1707631686-1-AQta6Adx7XE820fMfPVUS60dPdVda0+tCqyVIPp34UiJ455PG7exC2lh3dykfL7dYOXKQt7rb0y3dzDVgFhgNU0=;
+        path=/; expires=Sun, 11-Feb-24 06:38:06 GMT; domain=.api.openai.com; HttpOnly;
+        Secure; SameSite=None
+      - _cfuvid=DmVO3mul0rjFMHdsYLFnPSop8jl5DwyRBnq0SGxmkR8-1707631686867-0-604800000;
+        path=/; domain=.api.openai.com; HttpOnly; Secure; SameSite=None
+      Server:
+      - cloudflare
+      Cf-Ray:
+      - 853a6a502af21cab-FRA
+      Alt-Svc:
+      - h3=":443"; ma=86400
+    body:
+      encoding: ASCII-8BIT
+      string: |
+        {
+          "id": "cmpl-8qxITrsgoTHv8xu9OqVPSB2Pu3ZWP",
+          "object": "text_completion",
+          "created": 1707631685,
+          "model": "gpt-3.5-turbo-instruct",
+          "choices": [
+            {
+                "text": "\n1. Emotions: Sadness, exhaustion, frustration.\n2. Keywords: Tough, day.\n3. Recommendations: \n- Take some time to rest and recharge. \n- Reflect on the challenges faced and try to find ways to overcome them in the future. \n- Seek support from loved ones or a therapist to process and cope with the emotions. \n- Focus on self-care and engage in activities that bring joy and relaxation. \n- Remember that tough days are a part of life and they will pass. Stay positive and keep pushing through.",
+              "index": 0,
+              "logprobs": null,
+              "finish_reason": "stop"
+            }
+          ],
+          "usage": {
+            "prompt_tokens": 57,
+            "completion_tokens": 111,
+            "total_tokens": 168
+          }
+        }
+  recorded_at: Sun, 11 Feb 2024 06:08:06 GMT
+recorded_with: VCR 6.2.0

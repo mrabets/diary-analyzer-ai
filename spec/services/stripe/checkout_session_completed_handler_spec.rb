@@ -2,7 +2,7 @@
 
 require "rails_helper"
 
-# rubocop:disable RSpec/VerifiedDoubles, RSpec/MultipleMemoizedHelpers
+# rubocop:disable RSpec/VerifiedDoubles
 describe Stripe::CheckoutSessionCompletedHandler do
   let(:event) { double(Stripe::Event, type: event_type, data: event_data) }
   let(:stripe_subscription_ref) { "sub_123" }

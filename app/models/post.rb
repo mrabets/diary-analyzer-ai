@@ -5,6 +5,7 @@
 # Table name: posts
 #
 #  id         :bigint           not null, primary key
+#  data       :jsonb            not null
 #  title      :string           not null
 #  created_at :datetime         not null
 #  updated_at :datetime         not null
@@ -12,6 +13,7 @@
 #
 # Indexes
 #
+#  index_posts_on_data     (data) USING gin
 #  index_posts_on_user_id  (user_id)
 #
 # Foreign Keys
@@ -26,4 +28,18 @@ class Post < ApplicationRecord
 
   has_rich_text :content
   db_belongs_to :user
+
+  serialize :data, coder: SymbolKeysSerializer
+
+  before_save :reset_analyze_result, if: :content_changed?
+
+  private
+
+  def reset_analyze_result
+    data[:analyze_result] = nil
+  end
+
+  def content_changed?
+    content.body_changed?
+  end
 end

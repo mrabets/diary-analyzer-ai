@@ -47,6 +47,7 @@ gem "tzinfo-data", platforms: %i[windows jruby]
 # Reduces boot times through caching; required in config/boot.rb
 gem "bootsnap", require: false
 
+gem "anyway_config", "~> 2.0"
 gem "aws-sdk-s3", "~> 1.141"
 gem "better_html"
 gem "database_validations"
@@ -62,6 +63,10 @@ gem "elasticsearch-rails", "~> 7.2"
 gem "enumerate_it"
 gem "erb_lint", require: false
 gem "faker"
+gem "faraday"
+gem "faraday-net_http_persistent", "~> 2.0"
+gem "faulty"
+gem "nokogiri", ">= 1.16.2"
 gem "oj"
 gem "omniauth", "~> 2.1"
 gem "omniauth-github", "~> 2.0"
@@ -69,6 +74,7 @@ gem "omniauth-google-oauth2", "~> 1.1"
 gem "omniauth-rails_csrf_protection", "~> 1.0"
 gem "open-uri"
 gem "pagy", "~> 6.2"
+gem "retriable", "~> 3.1"
 gem "sidekiq", "~> 7.2"
 gem "simplecov"
 gem "simplecov-cobertura"
@@ -112,6 +118,7 @@ group :test do
   gem "rspec-rails", "~> 6.1.0"
   gem "shoulda-matchers", "~> 5.0"
   gem "test-prof"
+  gem "vcr"
   gem "webmock"
 end
 

@@ -12,3 +12,6 @@ application.register("hello", HelloController)
 
 import PagyInitializerController from "./pagy_initializer_controller"
 application.register("pagy-initializer", PagyInitializerController)
+
+import SpinnerController from "./spinner_controller"
+application.register("spinner", SpinnerController)

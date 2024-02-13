@@ -24,7 +24,13 @@ if ENV["CI"]
   SimpleCov.formatter = SimpleCov::Formatter::CoberturaFormatter
 end
 
+require "vcr"
 require "webmock/rspec"
+
+VCR.configure do |config|
+  config.cassette_library_dir = "spec/cassettes"
+  config.hook_into :webmock
+end
 
 # WebMock.disable_net_connect!(allow_localhost: true)
 

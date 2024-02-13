@@ -7,7 +7,11 @@ Rails.application.routes.draw do
   draw :subscriptions
   draw :payments
 
-  resources :posts
+  resources :posts do
+    member do
+      post :analyze
+    end
+  end
 
   resources :conversations, only: %i[show create] do
     resources :messages, only: %i[create]
