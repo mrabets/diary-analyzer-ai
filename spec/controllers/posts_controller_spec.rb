@@ -17,7 +17,7 @@ RSpec.describe PostsController do
 
     it "returns all posts" do
       get_index
-      expect(assigns(:posts)).to eq([post])
+      expect(assigns(:posts)).to include(post)
     end
 
     context "when search_query is present" do

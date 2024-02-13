@@ -51,6 +51,7 @@ class User < ApplicationRecord
   validates :name, presence: true, length: { minimum: 2, maximum: 100 }
 
   before_save :add_faker_avatar, :set_default_user_status, if: :new_record?
+  after_create :set_example_posts
 
   private
 
@@ -60,5 +61,9 @@ class User < ApplicationRecord
 
   def add_faker_avatar
     data[:avatar_url] = Faker::Avatar.image
+  end
+
+  def set_example_posts
+    10.times { posts.create(title: Faker::Lorem.sentence, content: Faker::Lorem.paragraph) }
   end
 end

@@ -13,15 +13,15 @@
 
   <div class="row mb-5">
     <div class="col-md-4 offset-md-4">
-      <div class="mb-3">
+      <div class="mb-3 text-center">
         <%= form.label :title, style: "display: block", class: "form-label" %>
-        <%= form.text_field :title, class: "form-control" %>
+        <%= form.text_field :title, class: "form-control", placeholder: "Ex. One day in college" %>
       </div>
     </div>
   </div>
 
   <div class="mb-3">
-    <%= form.rich_text_area :content, class: "form-control", style: "min-height: 300px;" %>
+    <%= form.rich_text_area :content, class: "form-control", style: "min-height: 300px;", placeholder: "Today was unique because..." %>
   </div>
 
   <div class="text-center">
