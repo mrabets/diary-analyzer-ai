@@ -1,15 +1,16 @@
-<main class="px-3">
-  <div>
-    <h1 class="text-center mb-5 compact-font">Diary Analyzer AI</h1>
-
-    <p class="text-center col-md-6 offset-md-3 lead">
-      The advanced tool powered by artificial intelligence, designed for analyzing and interpreting personal diary entries.
-      It provides users with valuable insights from their daily recordings, identifying key themes, moods, and trends, aiding in better self-understanding and personal growth.
-    </p>
-    <div class="text-center">
-      <p class="mb-5 col-md-6 offset-md-3">
-        <%= button_to "START", "users/sign_in", method: :get, form_class: "inline", class: "btn btn-lg btn-dark fw-bold border-white bg-dark" %>
-      </p>
+<section id="hero" class="d-flex align-items-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-lg-6 pt-5 pt-lg-0 order-2 order-lg-1 d-flex flex-column justify-content-center">
+        <h1 data-aos="fade-up" class="aos-init aos-animate">Diary Analyzer AI</h1>
+        <h2 data-aos="fade-up" data-aos-delay="400" class="aos-init aos-animate">The advanced tool powered by artificial intelligence, designed for analyzing and interpreting personal diary entries. </h2>
+        <div data-aos="fade-up" data-aos-delay="800" class="aos-init aos-animate">
+          <%= link_to "Get Started", "users/sign_in", form_class: "inline", class: "btn-get-started scrollto" %>
+        </div>
+      </div>
+      <div class="col-lg-6 order-1 order-lg-2 hero-img aos-init aos-animate" data-aos="fade-left" data-aos-delay="200">
+        <%= image_tag("diary_ai.png", class: "img-fluid animated", alt: "Hero") %>
+      </div>
     </div>
   </div>
-</main>
+</section>

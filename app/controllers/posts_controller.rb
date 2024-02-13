@@ -4,7 +4,7 @@ class PostsController < ApplicationController
   include Pagy::Backend
   include ResourceResponseHandling
 
-  before_action :authenticate_user!, except: %i[index show]
+  before_action :authenticate_user!
   before_action :set_post, only: %i[show edit update destroy analyze]
   before_action :set_posts_with_pagy, only: %i[index]
 
@@ -46,7 +46,7 @@ class PostsController < ApplicationController
   private
 
   def set_posts_with_pagy
-    @pagy, @posts = pagy(PagyPostsFetcher.call(search_query: params[:search_query]), items: 5)
+    @pagy, @posts = pagy(PagyPostsFetcher.call(search_query: params[:search_query], user: current_user), items: 5)
   end
 
   def set_post

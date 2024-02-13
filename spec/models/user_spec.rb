@@ -54,13 +54,23 @@ describe User do
     describe "before_save" do
       let(:avatar_url) { "avatar_url" }
 
-      before { allow(Faker::Avatar).to receive(:image).and_return(avatar_url) }
+      before do
+        allow(Faker::Avatar).to receive(:image).and_return(avatar_url)
+
+        user.save
+      end
 
       it "adds a avatar url" do
-        user.save
-
         expect(Faker::Avatar).to have_received(:image)
         expect(user.data[:avatar_url]).to eq(avatar_url)
+      end
+
+      it "sets default user status" do
+        expect(user.user_status_id).to eq(UserStatus.where(id: UserStatuses::OFFLINE).select(:id).first.id)
+      end
+
+      it "sets example posts" do
+        expect(user.posts.count).to eq(10)
       end
     end
 

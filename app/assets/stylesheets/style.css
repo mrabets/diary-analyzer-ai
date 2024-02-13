@@ -1,5 +1,6 @@
 body {
     padding-top: 80px;
+    /*font-family: 'Raleway', Arial, sans-serif !important;*/
 }
 
 .navbar-container {
@@ -94,3 +95,136 @@ body {
     color: #ffffff;
 }
 
+
+#error_explanation ul {
+    margin: 0;
+    padding: 10px;
+}
+
+#error_explanation ul {
+    list-style-type: none;
+    padding: 0;
+}
+
+.social-icon {
+    font-size: 1rem;
+    margin: 0 0.2rem;
+    color: #000;
+    text-decoration: none;
+}
+
+.social-icon i {
+    transition: color 0.3s ease;
+}
+
+.social-icon:hover i {
+    color: rgba(0,0,0,0.6);
+}
+
+.btn-get-started:hover {
+    background: #3498db;
+    color: #fff;
+}
+
+#hero {
+    width: 100%;
+    height: 70vh;
+    /*margin-top: 70px;*/
+}
+
+#hero h1 {
+    margin: 0 0 10px 0;
+    font-size: 48px;
+    font-weight: 700;
+    line-height: 56px;
+    color: black;
+}
+
+#hero h2 {
+    color: #484848;
+    margin-bottom: 50px;
+    font-size: 24px;
+}
+
+#hero .btn-get-started {
+    font-family: "Raleway", sans-serif;
+    font-weight: 500;
+    font-size: 16px;
+    letter-spacing: 1px;
+    display: inline-block;
+    padding: 10px 30px;
+    border-radius: 50px;
+    transition: 0.5s;
+    color: #000000;
+    border: 2px solid #000000;
+    text-decoration: none;
+}
+
+#hero .btn-get-started:hover {
+    background: #000000;
+    color: #fff;
+}
+
+#hero .animated {
+    animation: up-down 2s ease-in-out infinite alternate-reverse both;
+}
+
+@media (min-width: 1024px) {
+    #hero {
+        background-attachment: fixed;
+    }
+}
+
+@media (max-width: 991px) {
+    #hero {
+        height: 100vh;
+    }
+
+    #hero .hero-img {
+        text-align: center;
+    }
+
+    #hero .hero-img img {
+        width: 60%;
+    }
+}
+
+@media (max-width: 768px) {
+    #hero {
+        /*margin-top: 20px;*/
+    }
+
+    #hero h1 {
+        font-size: 28px;
+        line-height: 36px;
+    }
+
+    #hero h2 {
+        font-size: 18px;
+        line-height: 24px;
+        margin-bottom: 30px;
+    }
+
+    #hero .hero-img img {
+        width: 80%;
+    }
+}
+
+@media (max-width: 575px) {
+    #hero .hero-img img {
+        width: 90%;
+    }
+}
+
+@keyframes up-down {
+    0%, 100% {
+        transform: translateY(0);
+    }
+    50% {
+        transform: translateY(-10px);
+    }
+}
+
+.custom-footer {
+    padding-top: 2rem;
+}
