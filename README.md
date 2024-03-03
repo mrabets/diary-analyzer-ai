@@ -9,6 +9,8 @@
 
 **Diary Analyzer AI** is an advanced tool powered by artificial intelligence, designed for analyzing and interpreting personal diary entries. It provides users with valuable insights from their daily recordings, identifying key themes, moods, and recommendations, aiding in better self-understanding and personal growth.
 
+**Visit the project here: [diaryanalyzer.com](https://diaryanalyzer.com)**
+
 ### Features
 - **Mood Analysis**: Identifies the overall mood of the diary entries (positive, negative, neutral).
 - **Theme Detection**: Highlights key themes and topics covered in the entries.
