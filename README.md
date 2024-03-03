@@ -1,21 +1,37 @@
 [![codecov](https://codecov.io/gh/mrabets/diary-analyzer-ai/graph/badge.svg?token=G7566TBH6P)](https://codecov.io/gh/mrabets/diary-analyzer-ai)
 ![Build](https://github.com/mrabets/diary-analyzer-ai/actions/workflows/rubyonrails.yml/badge.svg)
+![Ruby](https://img.shields.io/badge/Ruby-3.2.2-red.svg)
+![Rails](https://img.shields.io/badge/Rails-7.1.3-red.svg)
 
 # Diary Analyzer AI
 
 <img align="right" src="/app/assets/images/logo.svg" width="150" height="auto">
 
-**Diary Analyzer AI** is an advanced tool powered by artificial intelligence, designed for analyzing and interpreting personal diary entries. It provides users with valuable insights from their daily recordings, identifying key themes, moods, and trends, aiding in better self-understanding and personal growth.
+**Diary Analyzer AI** is an advanced tool powered by artificial intelligence, designed for analyzing and interpreting personal diary entries. It provides users with valuable insights from their daily recordings, identifying key themes, moods, and recommendations, aiding in better self-understanding and personal growth.
 
 ### Features
 - **Mood Analysis**: Identifies the overall mood of the diary entries (positive, negative, neutral).
 - **Theme Detection**: Highlights key themes and topics covered in the entries.
-- **Trend Analysis**: Tracks changes in mood and themes over time, offering a broader perspective on the user's thoughts and feelings.
+- **Personalized Recommendations**: Offers actionable advice and recommendations based on the analysis of diary entries.
+
+## Technologies Used
+
+This project is built with a number of cutting-edge technologies and frameworks to ensure high performance and reliability:
+
+- Programming Language: **Ruby 3.2.2**
+- Web Application Framework: **Rails 7.1.3**
+- AI & Machine Learning: Utilizes the **OpenAI API** for analyzing text and extracting insights.
+- HTTP Client: **Faraday** for making network requests to external APIs.
+- Authentication: **OAuth 2.0** with **Omniauth** for secure user authentication through external providers.
+- Jobs: **ActionMailer** with **Sidekiq** for sending emails from the application.
+- Real-Time Web: **ActionCable** for real-time features in Rails applications.
+- Payments: **Stripe** for processing payments securely.
+- Database: **PostgreSQL** for relational data storage and **ElasticSearch** for efficient, full-text search capabilities.
+- Frontend: Employs **Hotwire** (**Turbo & Stimulus**) for a modern, interactive user experience without the need for complex JavaScript frameworks.
+- Deployment: Hosted on **DigitalOcean** using **Kamal**.
+
 
 ## Usage
-This API can be integrated into personal diary applications, mental health tracking apps, or any platform where users record their daily thoughts and feelings.
-
-Check out the [API docs](https://gist.github.com/mrabets/04362900778be23f9ed8c271483456c0)
 
 #### Create `.env` file with the following variables:
 
