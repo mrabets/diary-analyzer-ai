@@ -2,6 +2,6 @@
   (<% if user.online? %>
     online
   <% else %>
-    last seen <%= time_ago_in_words(user.last_seen_at) %> ago
+    <%= time_ago_in_words(user.last_seen_at) %>
   <% end %>)
 </span>

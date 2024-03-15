@@ -1,7 +1,7 @@
 <div class="col-md-6 offset-md-3">
   <article class="blog-post p-3">
     <h2 class="display-5 link-body-emphasis mb-1"><%= post.title %></h2>
-    <p class="blog-post-meta fst-italic">January 1, 2021 by <%= link_to post.user.name, user_path(post.user) %></p>
+    <p class="blog-post-meta fst-italic"><%= post.created_at.strftime("%B %d, %Y") %> by <%= link_to post.user.name, user_path(post.user), style: "text-decoration: none; color: #000000;" %></p>
 
     <div class="py-3 d-flex justify-content-center">
       <div class="w-100">
@@ -20,7 +20,7 @@
     <% if post.data[:analyze_result].present? %>
       <div class="d-flex justify-content-center">
         <button type="button" class="btn-analyze" data-bs-toggle="modal" data-bs-target="#analyzeModal">
-          <i class="fas fa-chart-line"></i> Show AI analysis results
+          <i class="fas fa-chart-line"></i> <%= t("analysis_result.show") %>
         </button>
       </div>
 
@@ -28,20 +28,20 @@
         <div class="modal-dialog">
           <div class="modal-content">
             <div class="modal-header">
-              <h5 class="modal-title" id="analyzeModalLabel">AI Analysis results</h5>
+              <h5 class="modal-title" id="analyzeModalLabel"><%= t("analysis_result.title") %></h5>
               <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
             </div>
             <div class="modal-body">
               <div>
-                <h5>Emotions</h5>
+                <h5><%= t("analysis_result.emotions") %></h5>
                 <p><%= emotions(post) %> </p>
               </div>
               <div>
-                <h5>Keywords</h5>
+                <h5><%= t("analysis_result.keywords") %></h5>
                 <p><%= keywords(post) %></p>
               </div>
               <div>
-                <h5>Recommendations</h5>
+                <h5><%= t("analysis_result.recommendations") %></h5>
                 <p><%= recommendations(post) %></p>
               </div>
             </div>
@@ -58,7 +58,7 @@
               <i id="icon-robot" class="fa-solid fa-robot fa-fw"></i>
               <i id="icon-spinner" class="fa fa-spinner fa-spin" style="display: none;"></i>
             </span>
-            <span class="text">AI Analyze</span>
+            <span class="text"><%= t("post.ai_analyze") %></span>
           </button>
 
         <% end %>

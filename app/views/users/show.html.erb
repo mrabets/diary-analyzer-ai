@@ -4,20 +4,20 @@
   </div>
 
   <h1 class="mb-5"><%= @user.name %></h1>
-  <p class="text-muted">ID: <%= @user.id %></p>
+  <p class="text-muted"><%= t('user_profile.id', id: @user.id) %></p>
 
   <% if @user.subscription&.premium? %>
     <div class="mb-3">
-      <%= button_to "Cancel subscription", cancel_subscriptions_path, class: "btn btn-danger", method: :post, form: { data: { turbo_confirm: "Are you sure?" } } %>
+      <%= button_to t('user_profile.cancel_subscription'), cancel_subscriptions_path, class: "btn btn-danger", method: :post, form: { data: { turbo_confirm: t('are_you_sure') } } %>
     </div>
     <div>
-      <p class="text-muted"> Premium member until <%= @user.subscription&.paid_until&.strftime("%d %B %Y") %> </p>
+      <p class="text-muted"> <%= t('user_profile.premium_member_until', date: @user.subscription&.paid_until&.strftime("%d %B %Y")) %> </p>
     </div>
   <% elsif @user == current_user %>
     <% if @user.subscription&.pending? %>
-      <p class="text-muted"> Your subscription is pending </p>
+      <p class="text-muted"> <%= t('user_profile.your_subscription_is_pending') %> </p>
     <% else %>
-      <%= button_to "✨ Subscribe for $0.99 per month ✨", subscriptions_path, class: "btn btn-dark btn-gradient", method: :post, form: { data: { turbo: false } } %>
+      <%= button_to t('user_profile.subscribe'), subscriptions_path, class: "btn btn-dark btn-gradient", method: :post, form: { data: { turbo: false } } %>
     <% end %>
   <% end %>
 

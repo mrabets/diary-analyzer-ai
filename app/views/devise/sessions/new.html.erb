@@ -1,5 +1,5 @@
 <div class="text-center">
-  <h1 class="mb-5">Welcome Back</h1>
+  <h1 class="mb-5"><%= t('welcome_back') %></h1>
 
   <%= render "devise/shared/social_links" %>
 
@@ -9,7 +9,7 @@
         <%= f.label :email, class: "form-label" %>
         <div class="input-group">
           <span class="input-group-text"><i class="fas fa-envelope"></i></span>
-          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: "Enter your email" %>
+          <%= f.email_field :email, autofocus: true, autocomplete: "email", class: "form-control", placeholder: t('enter_your_email') %>
         </div>
       </div>
     </div>
@@ -19,7 +19,7 @@
         <%= f.label :password, class: "form-label" %>
         <div class="input-group">
           <span class="input-group-text"><i class="fas fa-lock"></i></span>
-          <%= f.password_field :password, autocomplete: "current-password", class: "form-control", placeholder: "Enter your password" %>
+          <%= f.password_field :password, autocomplete: "current-password", class: "form-control", placeholder: t('enter_your_password') %>
         </div>
       </div>
     </div>
@@ -27,13 +27,13 @@
     <% if devise_mapping.rememberable? %>
       <div class="mb-3">
         <%= f.check_box :remember_me, class: "form-check-input" %>
-        <%= f.label :remember_me, class: "form-check-label" %>
+        <%= f.label :remember_me, t('remember_me'), class: "form-check-label" %>
       </div>
     <% end %>
 
     <div class="actions">
       <%= button_tag(type: "submit", class: "btn btn-dark") do %>
-        <i class="fas fa-sign-in-alt"></i> Log in
+        <i class="fas fa-sign-in-alt"></i> <%= t('log_in') %>
       <% end %>
     </div>
   <% end %>

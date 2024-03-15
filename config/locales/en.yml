@@ -28,6 +28,53 @@
 #       enabled: "ON"
 
 en:
+  welcome_back: "Welcome Back"
+  enter_your_email: "Enter your email"
+  enter_your_password: "Enter your password"
+  log_in: "Log in"
+  remember_me: "Remember me"
+  email: "Email"
+  password: "Password"
+  post:
+    new_post: "New entry"
+    title: "Title"
+    title_example: "My amazing day"
+    content_example: "For example: Today I went to the library and saw..."
+    save: "Save"
+    ai_analyze: "AI Analyze"
+  analysis_result:
+    show: Show AI analysis results
+    title: "Analysis Result"
+    keywords: "Keywords"
+    emotions: "Emotions"
+    recommendations: "Recommendations"
+  chat:
+    title: "Open Chat"
+    placeholder: "Write a message..."
+    conversation: "Conversation with"
+  footer:
+    developed_by: "Developed by"
+  are_you_sure: "Are you sure?"
+  datetime:
+    distance_in_words:
+      about_x_months: "last seen about %{count} months ago"
+  user_profile:
+    premium_member_until: "Premium member until %{date}"
+    your_subscription_is_pending: "Your subscription is pending"
+    cancel_subscription: "Cancel subscription"
+    subscribe: "✨ Subscribe for $0.99 per month ✨"
+    id: "ID: %{id}"
+  navbar:
+    diary_ai: "Diary AI"
+    chat: "Chat"
+    memories: "Memories"
+    new_entry: "New Entry"
+    search_memories: "Search memories..."
+    profile: "Profile"
+    ai_premium: "✨ AI Premium ✨"
+    sign_out: "Sign out"
+    sign_in: "Sign in"
+    sign_up: "Sign up"
   payments:
     success: "Purchase Successful"
     cancel: "Purchase Unsuccessful"

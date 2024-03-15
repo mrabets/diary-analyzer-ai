@@ -1,17 +1,33 @@
 <div class="custom-footer">
   <footer class="mt-auto mt-5 py-2">
-    <ul class="border-bottom"></ul>
-    <p class="text-center text-muted">
-      Developed by Mrabets
-      <a class="social-icon" href="https://github.com/mrabets/">
-        <i class="fab fa-github"></i>
-      </a>
-      <a class="social-icon" href="https://www.linkedin.com/in/karimmarabet/">
-        <i class="fab fa-linkedin"></i>
-      </a>
-      <a class="social-icon" href="https://medium.com/@mrabets">
-        <i class="fab fa-medium"></i>
-      </a>
-    </p>
+    <div class="container">
+      <div class="row justify-content-between align-items-center">
+        <div class="col">
+          <p class="text-center text-muted mt-3">
+            <%= t('footer.developed_by') %> Mrabets
+            <a class="social-icon" href="https://github.com/mrabets/">
+              <i class="fab fa-github"></i>
+            </a>
+            <a class="social-icon" href="https://www.linkedin.com/in/karimmarabet/">
+              <i class="fab fa-linkedin"></i>
+            </a>
+            <a class="social-icon" href="https://medium.com/@mrabets">
+              <i class="fab fa-medium"></i>
+            </a>
+          </p>
+        </div>
+        <div class="col-auto">
+          <div class="dropdown">
+            <a class="btn btn-dark dropdown-toggle" href="#" role="button" id="dropdownMenuLink" data-bs-toggle="dropdown" aria-expanded="false">
+              <i class="fas fa-globe"></i>
+            </a>
+            <ul class="dropdown-menu dropdown-menu-end" aria-labelledby="dropdownMenuLink">
+              <li><a class="dropdown-item" href="?locale=en">English</a></li>
+              <li><a class="dropdown-item" href="?locale=ru">Русский</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </div>
   </footer>
 </div>

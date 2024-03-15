@@ -2,9 +2,9 @@
   <div class="navbar-container fixed-top container d-flex w-100 mx-auto flex-column">
     <nav class="navbar navbar-expand-lg bg-body-tertiary rounded">
       <div class="container-fluid">
-        <a class="navbar-brand" href="/">
-          <%= image_tag("logo.svg", alt: "Logo", width: "30", height: "24", class: "d-inline-block align-text-top") %>
-          Diary AI
+        <a class="navbar-brand" href="<%= root_path(locale: I18n.locale) %>">
+          <%= image_tag("logo.svg", alt: t("navbar.logo_alt"), width: "30", height: "24", class: "d-inline-block align-text-top") %>
+          <%= t("navbar.diary_ai") %>
         </a>
         <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarsExample09" aria-controls="navbarsExample09" aria-expanded="true" aria-label="Toggle navigation">
           <span class="navbar-toggler-icon"></span>
@@ -13,23 +13,23 @@
           <ul class="nav mx-auto justify-content-center mb-2 mb-md-0">
             <li class="nav-item">
               <%= link_to users_path, class: "nav-link px-2 #{current_page?(users_path) ? 'link-secondary' : 'link-body-emphasis'}" do %>
-                <i class="fas fa-comments"></i> Chat
+                <i class="fas fa-comments"></i> <%= t("navbar.chat") %>
               <% end %>
             </li>
             <li class="nav-item">
               <%= link_to posts_path, class: "nav-link px-2 #{current_page?(posts_path) ? 'link-secondary' : 'link-body-emphasis'}" do %>
-                <i class="fas fa-book"></i> Memories
+                <i class="fas fa-book"></i> <%= t("navbar.memories") %>
               <% end %>
             </li>
             <li class="nav-item">
               <%= link_to new_post_path, class: "nav-link px-2 #{current_page?(new_post_path) ? 'link-secondary' : 'link-body-emphasis'}" do %>
-                <i class="fas fa-plus-square"></i> New Entry
+                <i class="fas fa-plus-square"></i> <%= t("navbar.new_entry") %>
               <% end %>
             </li>
           </ul>
 
           <%= form_with url: posts_path, method: :get, role: "search", class: "col-12 col-lg-auto mb-3 mb-lg-0 me-lg-3", local: true do |form| %>
-            <%= form.search_field :search_query, value: params[:search_query], class: "form-control", placeholder: "Search memories...", aria: { label: "Search" } %>
+            <%= form.search_field :search_query, value: params[:search_query], class: "form-control", placeholder: t("navbar.search_memories"), aria: { label: "Search" } %>
           <% end %>
 
           <ul class="navbar-nav text-end">
@@ -41,13 +41,13 @@
                 <ul class="dropdown-menu text-small">
                   <li>
                     <%= link_to profile_path, class: "dropdown-item" do %>
-                      <i class="fas fa-user"></i> Profile
+                      <i class="fas fa-user"></i> <%= t("navbar.profile") %>
                     <% end %>
                   </li>
                   <% unless current_user.subscription&.premium? %>
                     <li>
                       <%= button_to subscriptions_path, class: "dropdown-item btn btn-dark btn-gradient", method: :post, form: { data: { turbo: false } } do %>
-                        ✨ AI Premium ✨
+                        <%= t("navbar.ai_premium") %>
                       <% end %>
                     </li>
                   <% end %>
@@ -56,7 +56,7 @@
                   </li>
                   <li>
                     <%= link_to destroy_user_session_path, data: { "turbo-method": :delete }, class: "dropdown-item" do %>
-                      <i class="fas fa-sign-out-alt"></i> Sign out
+                      <i class="fas fa-sign-out-alt"></i> <%= t("navbar.sign_out") %>
                     <% end %>
                   </li>
                 </ul>
@@ -64,12 +64,12 @@
             <% else %>
               <li class="nav-item">
                 <%= link_to new_user_session_path, class: "nav-link" do %>
-                  <i class="fas fa-sign-in-alt"></i> Sign in
+                  <i class="fas fa-sign-in-alt"></i> <%= t("navbar.sign_in") %>
                 <% end %>
               </li>
               <li class="nav-item">
                 <%= link_to new_user_registration_path, class: "nav-link" do %>
-                  <i class="fas fa-user-plus"></i> Sign up
+                  <i class="fas fa-user-plus"></i> <%= t("navbar.sign_up") %>
                 <% end %>
               </li>
             <% end %>

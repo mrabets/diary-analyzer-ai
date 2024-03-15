@@ -1,6 +1,6 @@
 <div class="container mt-3">
   <h2 class="mb-4">
-    Conversation with <%= @presenter.companion.name %>
+    <%= t("chat.conversation") %> <%= @presenter.companion.name %>
 
     <%= turbo_stream_from "user_status" %>
 

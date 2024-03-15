@@ -14,17 +14,17 @@
   <div class="row mb-5">
     <div class="col-md-4 offset-md-4">
       <div class="mb-3 text-center">
-        <%= form.label :title, style: "display: block", class: "form-label" %>
-        <%= form.text_field :title, class: "form-control", placeholder: "Ex. One day in college" %>
+        <%= form.label :title, t("post.title"),  style: "display: block", class: "form-label" %>
+        <%= form.text_field :title, class: "form-control", placeholder: t("post.title_example") %>
       </div>
     </div>
   </div>
 
   <div class="mb-3">
-    <%= form.rich_text_area :content, class: "form-control", style: "min-height: 300px;", placeholder: "Today was unique because..." %>
+    <%= form.rich_text_area :content, class: "form-control", style: "min-height: 300px;", placeholder: t("post.content_example") %>
   </div>
 
   <div class="text-center">
-    <%= form.submit "Save", class: "btn btn-dark" %>
+    <%= form.submit t("post.save"), class: "btn btn-dark" %>
   </div>
 <% end %>

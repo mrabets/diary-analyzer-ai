@@ -1,0 +1,67 @@
+ru:
+  welcome_back: "С возвращением"
+  enter_your_email: "Введите ваш email"
+  enter_your_password: "Введите ваш пароль"
+  log_in: "Войти"
+  remember_me: "Запомнить меня"
+  post:
+    new_post: "Новая запись"
+    title: "Заголовок"
+    title_example: "Мой удивительный день"
+    content_example: "Например: Сегодня я пошел в библиотеку и увидел..."
+    save: "Сохранить"
+    ai_analyze: "AI Анализ"
+  analysis_result:
+    show: Показать результаты анализа AI
+    title: "Результаты Анализа"
+    keywords: "Ключевые слова"
+    emotions: "Эмоции"
+    recommendations: "Рекомендации"
+  chat:
+    title: "Открытый Чат"
+    placeholder: "Напиши сообщение..."
+    conversation: "Беседа с"
+  footer:
+    developed_by: "Разрабатан"
+  are_you_sure: "Вы уверены?"
+  datetime:
+    distance_in_words:
+      about_x_months: "был в сети около %{count} месяцев назад"
+  user_profile:
+    premium_member_until: "Премиум подписка до %{date}"
+    your_subscription_is_pending: "Ваша подписка обрабатывается"
+    cancel_subscription: "Отменить подписку"
+    subscribe: "✨ Подписаться за $0.99 в месяц ✨"
+    id: "ID: %{id}"
+  navbar:
+    diary_ai: "Diary AI"
+    chat: "Чат"
+    memories: "Воспоминания"
+    new_entry: "Новая Запись"
+    search_memories: "Искать воспоминания..."
+    profile: "Профиль"
+    ai_premium: "✨ AI Премиум ✨"
+    sign_out: "Выйти"
+    sign_in: "Войти"
+    sign_up: "Зарегистрироваться"
+  payments:
+    success: "Покупка успешно завершена"
+    cancel: "Покупка отменена"
+  subscriptions:
+    subscription_canceled: "Подписка отменена"
+  posts:
+    create:
+      success: "Пост успешно создан."
+    update:
+      success: "Пост успешно обновлен."
+    destroy:
+      success: "Пост успешно удален."
+    analyze:
+      success: "Анализ успешно выполнен."
+      premium_not_found: "Вам необходимо перейти на Премиум для использования этой функции."
+  device_mailer:
+    welcome_subject: "Добро пожаловать в Дневник Анализатора AI!"
+  faraday_api_client:
+    failure_message: "API сейчас недоступен. Попробуйте позже."
+  open_ai_api_client:
+    failure_message: "API OpenAI сейчас недоступен. Попробуйте позже."
