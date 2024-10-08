@@ -20,7 +20,7 @@
 
 This project is built with a number of cutting-edge technologies and frameworks to ensure high performance and reliability:
 
-- Programming Language: **Ruby 3.2.2**
+- Programming Language: **Ruby 3.3.5**
 - Web Application Framework: **Rails 7.1.3**
 - AI & Machine Learning: Utilizes the **OpenAI API** for analyzing text and extracting insights.
 - HTTP Client: **Faraday** for making network requests to external APIs.

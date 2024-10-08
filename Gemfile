@@ -2,7 +2,7 @@
 
 source "https://rubygems.org"
 
-ruby "3.2.2"
+ruby "3.3.5"
 
 # Use main development branch of Rails
 gem "rails", "~> 7.1.0"
@@ -102,7 +102,7 @@ group :development do
   gem "bullet"
   gem "database_consistency", require: false
   gem "flamegraph"
-  gem "kamal"
+  gem "kamal", "~> 1.8.0"
   gem "memory_profiler"
   gem "rack-mini-profiler"
   gem "stackprof"
