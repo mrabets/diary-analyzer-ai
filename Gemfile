@@ -5,7 +5,7 @@ source "https://rubygems.org"
 ruby "3.3.5"
 
 # Use main development branch of Rails
-gem "rails", "~> 7.1.0"
+gem "rails", "~> 8.0.1"
 
 # The original asset pipeline for Rails [https://github.com/rails/sprockets-rails]
 gem "sprockets-rails"
@@ -97,7 +97,7 @@ end
 
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
-  gem "annotate", "~> 3.2"
+  gem "annotate"
   gem "brakeman", require: false
   gem "bullet"
   gem "database_consistency", require: false
