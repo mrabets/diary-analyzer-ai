@@ -2,7 +2,7 @@
 
 source "https://rubygems.org"
 
-ruby "3.3.5"
+ruby "3.4.1"
 
 # Use main development branch of Rails
 gem "rails", "~> 8.0.1"

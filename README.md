@@ -1,7 +1,7 @@
 [![codecov](https://codecov.io/gh/mrabets/diary-analyzer-ai/graph/badge.svg?token=G7566TBH6P)](https://codecov.io/gh/mrabets/diary-analyzer-ai)
 ![Build](https://github.com/mrabets/diary-analyzer-ai/actions/workflows/rubyonrails.yml/badge.svg)
-![Ruby](https://img.shields.io/badge/Ruby-3.2.2-red.svg)
-![Rails](https://img.shields.io/badge/Rails-7.1.3-red.svg)
+![Ruby](https://img.shields.io/badge/Ruby-3.4.1-red.svg)
+![Rails](https://img.shields.io/badge/Rails-8.0.1-red.svg)
 
 # Diary Analyzer AI
 
@@ -20,8 +20,8 @@
 
 This project is built with a number of cutting-edge technologies and frameworks to ensure high performance and reliability:
 
-- Programming Language: **Ruby 3.3.5**
-- Web Application Framework: **Rails 7.1.3**
+- Programming Language: **Ruby 3.4.1**
+- Web Application Framework: **Rails 8.0.1**
 - AI & Machine Learning: Utilizes the **OpenAI API** for analyzing text and extracting insights.
 - HTTP Client: **Faraday** for making network requests to external APIs.
 - Authentication: **OAuth 2.0** with **Omniauth** for secure user authentication through external providers.
